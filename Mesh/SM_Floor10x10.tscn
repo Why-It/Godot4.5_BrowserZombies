@@ -1,0 +1,14 @@
+[gd_scene load_steps=3 format=3 uid="uid://dcgxlcy3g6cyb"]
+
+[ext_resource type="PackedScene" uid="uid://b2i8ejiwayfy1" path="res://Mesh/SM_ProtoCube.tscn" id="1_6di8q"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_nsxyq"]
+size = Vector3(10, 0.5, 10)
+
+[node name="Floor" instance=ExtResource("1_6di8q")]
+
+[node name="CollisionShape3D" parent="." index="0"]
+shape = SubResource("BoxShape3D_nsxyq")
+
+[node name="MeshInstance3D" parent="." index="1"]
+transform = Transform3D(10, 0, 0, 0, 0.5, 0, 0, 0, 10, 0, 0, 0)

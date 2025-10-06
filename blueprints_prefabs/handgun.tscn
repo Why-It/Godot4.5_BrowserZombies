@@ -1,0 +1,171 @@
+[gd_scene load_steps=15 format=3 uid="uid://5nclj8qnidtt"]
+
+[ext_resource type="Script" uid="uid://cje7bmqe30k1i" path="res://scripts/handgun.gd" id="1_x37ng"]
+[ext_resource type="Texture2D" uid="uid://2sf528bwke5i" path="res://textures/reticle.png" id="2_ibv3v"]
+[ext_resource type="AnimationLibrary" uid="uid://cvnsi6sgs43qg" path="res://animations/guns.res" id="3_6ncoc"]
+
+[sub_resource type="BoxMesh" id="BoxMesh_num7p"]
+size = Vector3(0.025, 0.05, 0.025)
+
+[sub_resource type="BoxMesh" id="BoxMesh_dkivr"]
+size = Vector3(0.05, 0.025, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_05lbu"]
+size = Vector3(0.05, 0.025, 0.05)
+
+[sub_resource type="BoxMesh" id="BoxMesh_8awqd"]
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_35dni"]
+size = Vector3(0.5, 1, 0.5)
+
+[sub_resource type="BoxMesh" id="BoxMesh_wbn6h"]
+size = Vector3(0.1, 0.1, 0.1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_uibyv"]
+size = Vector3(0.18, 0.25, 1)
+
+[sub_resource type="BoxMesh" id="BoxMesh_47rqx"]
+size = Vector3(0.15, 0.4, 0.15)
+
+[sub_resource type="TorusMesh" id="TorusMesh_0y0kv"]
+inner_radius = 0.05
+outer_radius = 0.1
+rings = 20
+ring_segments = 10
+
+[sub_resource type="Animation" id="Animation_0fort"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath(".:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath(".:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uoms3"]
+_data = {
+&"RESET": SubResource("Animation_0fort")
+}
+
+[node name="handgun" type="Node3D"]
+script = ExtResource("1_x37ng")
+
+[node name="gun" type="Node3D" parent="."]
+
+[node name="components" type="Node3D" parent="gun"]
+
+[node name="muzzle" type="Node3D" parent="gun/components"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.04417181, -0.39891058)
+
+[node name="sight" type="Node3D" parent="gun/components"]
+
+[node name="fore-sight" type="MeshInstance3D" parent="gun/components/sight"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0968643, -0.313197)
+mesh = SubResource("BoxMesh_num7p")
+
+[node name="rear-sight-left" type="MeshInstance3D" parent="gun/components/sight"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0213223, 0.100772, 0.118641)
+mesh = SubResource("BoxMesh_dkivr")
+
+[node name="rear-sight-right" type="MeshInstance3D" parent="gun/components/sight"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0227361, 0.100772, 0.118641)
+mesh = SubResource("BoxMesh_05lbu")
+
+[node name="foregrip" type="Node3D" parent="gun/components"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15395, -0.231158)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="gun/components/foregrip"]
+transform = Transform3D(0.15, 0, 0, 0, 0.12, 0, 0, 0, 0.15, 0, 0, 0)
+mesh = SubResource("BoxMesh_8awqd")
+
+[node name="handle" type="Node3D" parent="gun/components"]
+
+[node name="handle" type="MeshInstance3D" parent="gun/components/handle"]
+transform = Transform3D(0.2, 0, 0, 0, 0.199441, 0.0149435, 0, -0.0149435, 0.199441, -0.000776112, -0.180801, 0.213359)
+mesh = SubResource("BoxMesh_35dni")
+skeleton = NodePath("../..")
+
+[node name="trigger-guard" type="Node3D" parent="gun/components"]
+
+[node name="trigger-guard" type="MeshInstance3D" parent="gun/components/trigger-guard"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, -0.10824, 0.13689)
+mesh = SubResource("BoxMesh_wbn6h")
+skeleton = NodePath("../..")
+
+[node name="body" type="Node3D" parent="gun/components"]
+
+[node name="body" type="MeshInstance3D" parent="gun/components/body"]
+transform = Transform3D(0.75, 0, 0, 0, 0.75, 0, 0, 0, 0.75, 0.000485837, 0.00212175, -0.00110197)
+mesh = SubResource("BoxMesh_uibyv")
+skeleton = NodePath("../../..")
+
+[node name="mag" type="Node3D" parent="gun/components"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.00710061, -0.176908, -0.00701328)
+
+[node name="mag_mesh" type="MeshInstance3D" parent="gun/components/mag"]
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0, 0)
+mesh = SubResource("BoxMesh_47rqx")
+
+[node name="optic" type="Node3D" parent="gun/components"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.172149, 0)
+visible = false
+
+[node name="scope" type="MeshInstance3D" parent="gun/components/optic"]
+transform = Transform3D(0.75, 0, 0, 0, -1.09278e-07, -0.75, 0, 2.5, -3.27835e-08, 0, 0, 0)
+mesh = SubResource("TorusMesh_0y0kv")
+
+[node name="RayCast3D" type="RayCast3D" parent="gun"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.044361472, -0.3758892)
+target_position = Vector3(0, 0, -50)
+collision_mask = 2
+
+[node name="crosshair" type="Control" parent="."]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="CenterContainer" type="CenterContainer" parent="crosshair"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="TextureRect" type="TextureRect" parent="crosshair/CenterContainer"]
+texture_filter = 2
+layout_mode = 2
+texture = ExtResource("2_ibv3v")
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="."]
+root_node = NodePath("../gun")
+libraries = {
+&"": SubResource("AnimationLibrary_uoms3"),
+&"guns": ExtResource("3_6ncoc")
+}
+
+[connection signal="animation_finished" from="AnimationPlayer" to="." method="_on_animation_player_animation_finished"]

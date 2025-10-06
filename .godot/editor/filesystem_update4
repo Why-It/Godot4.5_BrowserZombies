@@ -1,0 +1,7 @@
+res://blueprints_prefabs/zombie.tscn
+res://scripts/enemy.gd
+res://blueprints_prefabs/player.tscn
+res://scripts/player.gd
+res://scenes_levels/sen_dolta.tscn
+res://materials/M_ProtoGridWA_Gray.tres
+res://M_ProtoGrid_Sand.tres

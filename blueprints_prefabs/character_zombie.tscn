@@ -1,0 +1,204 @@
+[gd_scene load_steps=3 format=3 uid="uid://fo2puhsrd3pu"]
+
+[ext_resource type="PackedScene" uid="uid://dw51vdkk73rom" path="res://Mesh/Zombie/Zombie.fbx" id="1_4mrbv"]
+[ext_resource type="Material" uid="uid://dosbg8rux54m8" path="res://materials/M_Zombie.tres" id="2_n8375"]
+
+[node name="Zombie" instance=ExtResource("1_4mrbv")]
+
+[node name="Skeleton3D" parent="Zombie/Skeleton" index="0"]
+bones/0/position = Vector3(-1.5071323e-12, 0.14776085, 0.007757321)
+bones/0/rotation = Quaternion(0.70328426, 0.7032842, -0.07342594, -0.07342594)
+bones/1/rotation = Quaternion(-0.0034354648, -0.15019037, 0.054303594, 0.98715866)
+bones/5/rotation = Quaternion(0.28456217, 0.94548374, 0.14875877, 0.054366034)
+bones/6/rotation = Quaternion(9.2137623e-17, 0.5100027, -7.737081e-17, 0.8601728)
+bones/8/rotation = Quaternion(0.28456217, 0.94548374, 0.14875875, 0.054366026)
+bones/9/rotation = Quaternion(-8.271806e-25, 0.5100027, 5.169879e-25, 0.86017287)
+bones/11/rotation = Quaternion(0.1201351, -0.7329215, -0.1914053, 0.64168346)
+bones/12/rotation = Quaternion(-1.03758055e-07, -0.14659831, -1.5376884e-08, 0.9891961)
+bones/17/rotation = Quaternion(0.010391293, -0.15344323, 0.03255834, 0.9875663)
+bones/18/rotation = Quaternion(-4.8079698e-17, 0.5244988, -2.7540403e-17, 0.85141116)
+bones/20/rotation = Quaternion(0.010391293, -0.15344322, 0.03255834, 0.9875663)
+bones/21/rotation = Quaternion(-9.749097e-17, 0.5244989, 2.2285754e-16, 0.8514112)
+bones/23/rotation = Quaternion(-0.107457735, -0.68728435, -0.059046626, 0.7159655)
+bones/24/rotation = Quaternion(-6.396357e-08, -0.14659831, -9.479354e-09, 0.9891961)
+bones/26/rotation = Quaternion(-8.301182e-11, -0.09958822, 0.02102406, 0.9948066)
+bones/27/rotation = Quaternion(3.0976843e-10, 0.12795517, -0.0270126, 0.99141204)
+bones/28/rotation = Quaternion(4.340226e-10, 0.22499873, -0.047499463, 0.97320056)
+bones/29/rotation = Quaternion(-2.5361037e-26, 0.08552577, -2.6495631e-25, 0.99633604)
+bones/30/position = Vector3(0.011888921, 2.3146814e-13, 6.262444e-13)
+bones/30/rotation = Quaternion(0.303286, -0.18134293, 0.23864135, 0.90453446)
+bones/31/rotation = Quaternion(2.0663e-40, -0.12841116, 0, 0.99172103)
+bones/35/rotation = Quaternion(0.1290388, 0.97939533, -0.15200733, -0.03205607)
+bones/38/rotation = Quaternion(0.12903878, 0.97939533, -0.15200733, -0.032056063)
+bones/41/rotation = Quaternion(-0.25286943, 0.08241791, -0.052491024, 0.9625534)
+bones/42/rotation = Quaternion(-9.1835e-41, 1.60712e-40, -0.19292153, 0.9812142)
+bones/43/rotation = Quaternion(4.59177e-40, -5.39392e-40, -0.0702035, 0.9975327)
+bones/44/rotation = Quaternion(0, 0, 5.2102983e-13, 1)
+bones/45/rotation = Quaternion(-0.05742736, -0.21363874, -0.15605646, 0.9626562)
+bones/47/rotation = Quaternion(0.22054484, -0.03686399, 0.16660433, 0.96033543)
+bones/48/rotation = Quaternion(0.10443191, -0.4639151, 0.24514855, 0.8448544)
+bones/53/rotation = Quaternion(0.22054484, -0.03686399, 0.16660433, 0.9603354)
+bones/54/rotation = Quaternion(0.10443189, -0.46391505, 0.24514855, 0.84485435)
+bones/56/rotation = Quaternion(-0.36735436, -0.04063754, 0.019943174, 0.9289789)
+bones/57/rotation = Quaternion(5.293956e-23, 2.3964167e-15, -0.19292153, 0.9812142)
+bones/58/rotation = Quaternion(0, 3.1797147e-15, -0.0702035, 0.9975327)
+
+[node name="Skin4" parent="Zombie/Skeleton/Skeleton3D" index="0"]
+surface_material_override/0 = ExtResource("2_n8375")
+surface_material_override/1 = ExtResource("2_n8375")
+
+[node name="COG_Ctrl" parent="Zombie/Controls/Transform_Ctrl_Grp/Transform_Ctrl/COG_Ctrl_Grp" index="0"]
+transform = Transform3D(1, 0, 0, 0, 0.9784345, -0.20655721, 0, 0.20655721, 0.9784345, -0.022322161, -1.5072784e-12, -0.00417666)
+
+[node name="Hip_Ctrl" parent="Zombie/Controls/Transform_Ctrl_Grp/Transform_Ctrl/COG_Ctrl_Grp/COG_Ctrl/Hip_Ctrl_Grp" index="0"]
+transform = Transform3D(0.94898796, -0.10618056, -0.29689655, 0.10824446, 0.9940786, -0.009529058, 0.2961503, -0.023094442, 0.95486206, 0, 0, 0)
+
+[node name="Spine_01_Ctrl" parent="Zombie/Controls/Transform_Ctrl_Grp/Transform_Ctrl/COG_Ctrl_Grp/COG_Ctrl/Spine_01_Main_Ctrl_Grp/Spine_01_FK_Ctrl_Grp/Spine_01_Ctrl_Grp" index="0"]
+transform = Transform3D(0.9792804, -0.041829746, -0.19814202, 0.041829746, 0.999116, -0.004187497, 0.19814205, -0.004187497, 0.98016435, 0, 0, 0)
+
+[node name="Spine_02_Ctrl_Grp" parent="Zombie/Controls/Transform_Ctrl_Grp/Transform_Ctrl/COG_Ctrl_Grp/COG_Ctrl/Spine_01_Main_Ctrl_Grp/Spine_01_FK_Ctrl_Grp" index="1"]
+transform = Transform3D(0.041829824, 0.9991159, -0.00418742, 0.97928035, -0.041829802, -0.19814199, -0.19814199, 0.0041875863, -0.9801644, 0.0009451593, 0.19504924, -0.0008964349)
+
+[node name="Spine_02_Ctrl" parent="Zombie/Controls/Transform_Ctrl_Grp/Transform_Ctrl/COG_Ctrl_Grp/COG_Ctrl/Spine_01_Main_Ctrl_Grp/Spine_01_FK_Ctrl_Grp/Spine_02_Ctrl_Grp" index="0"]
+transform = Transform3D(0.9657956, 0.05356123, 0.25371253, -0.05356123, 0.99854064, -0.0069128023, -0.25371256, -0.006912802, 0.9672549, 0, 0, 0)
+
+[node name="Spine_03_Ctrl_Grp" parent="Zombie/Controls/Transform_Ctrl_Grp/Transform_Ctrl/COG_Ctrl_Grp/COG_Ctrl/Spine_01_Main_Ctrl_Grp/Spine_01_FK_Ctrl_Grp" index="2"]
+transform = Transform3D(-0.012052298, 0.9999272, -0.0003443417, 0.9982962, 0.012052297, 0.05709108, 0.05709108, 0.0003443236, -0.9983689, 0.0006564891, 0.21895956, 0.00047095798)
+
+[node name="Spine_03_Ctrl" parent="Zombie/Controls/Transform_Ctrl_Grp/Transform_Ctrl/COG_Ctrl_Grp/COG_Ctrl/Spine_01_Main_Ctrl_Grp/Spine_01_FK_Ctrl_Grp/Spine_03_Ctrl_Grp" index="0"]
+transform = Transform3D(0.89423877, 0.092452995, 0.43793777, -0.092452995, 0.9954876, -0.021374634, -0.43793777, -0.021374635, 0.89875114, 0, 0, 0)
+
+[node name="Neck_01_Ctrl_Grp" parent="Zombie/Controls/Transform_Ctrl_Grp/Transform_Ctrl/COG_Ctrl_Grp/COG_Ctrl/Spine_01_Main_Ctrl_Grp/Spine_01_FK_Ctrl_Grp" index="3"]
+transform = Transform3D(-0.09697053, 0.99430835, -0.04413266, 0.77071184, 0.10307323, 0.628792, 0.629762, 0.026960716, -0.7763203, -0.001579332, 0.23775743, 0.01106175)
+
+[node name="Neck_01_Ctrl" parent="Zombie/Controls/Transform_Ctrl_Grp/Transform_Ctrl/COG_Ctrl_Grp/COG_Ctrl/Spine_01_Main_Ctrl_Grp/Spine_01_FK_Ctrl_Grp/Neck_01_Ctrl_Grp" index="0"]
+transform = Transform3D(1, 0, 9.162449e-13, 0, 1, 0, -9.162449e-13, 0, 1, 0, 0, 0)
+
+[node name="Neck_02_Ctrl_Grp" parent="Zombie/Controls/Transform_Ctrl_Grp/Transform_Ctrl/COG_Ctrl_Grp/COG_Ctrl/Spine_01_Main_Ctrl_Grp/Spine_01_FK_Ctrl_Grp" index="4"]
+transform = Transform3D(-0.082001746, 0.9943083, -0.06801951, 0.5788255, 0.10307309, 0.80891097, 0.8113178, 0.026960686, -0.5839832, -0.0027322078, 0.24692038, 0.01854894)
+
+[node name="Neck_02_Ctrl" parent="Zombie/Controls/Transform_Ctrl_Grp/Transform_Ctrl/COG_Ctrl_Grp/COG_Ctrl/Spine_01_Main_Ctrl_Grp/Spine_01_FK_Ctrl_Grp/Neck_02_Ctrl_Grp" index="0"]
+transform = Transform3D(0.66761374, -0.6439495, -0.3736588, 0.32172114, 0.70213574, -0.6352172, 0.671407, 0.3038658, 0.6759277, -9.993628e-13, 2.3150622e-13, 3.7739576e-13)
+
+[node name="Jaw_01_Ctrl_Grp" parent="Zombie/Controls/Transform_Ctrl_Grp/Transform_Ctrl/COG_Ctrl_Grp/COG_Ctrl/Spine_01_Main_Ctrl_Grp/Spine_01_FK_Ctrl_Grp" index="5"]
+transform = Transform3D(0.21947554, 0.7302759, -0.6469371, 0.9627012, -0.054562602, 0.26500815, 0.15823048, -0.68097, -0.71501255, -0.0002003257, 0.25802615, 0.020374296)
+
+[node name="R_Shoulder2_IK_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/R_Arm_Ctrl_Grp" index="0"]
+transform = Transform3D(0.97843456, 7.450581e-09, 0.20655721, 0.103073254, 0.8665986, -0.48824456, -0.1790022, 0.49900588, 0.84791, -0.0007396138, 0.005355493, -0.1079731)
+
+[node name="R_Elbow2_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/R_Arm_Ctrl_Grp/R_Shoulder2_IK_Ctrl_Grp/R_Elbow2_PV_Ctrl_Grp/Offset_Grp" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -2.2374005e-11, 0, 0)
+
+[node name="R_Wrist2_IK_Handle_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/R_Arm_Ctrl_Grp/R_Shoulder2_IK_Ctrl_Grp" index="2"]
+transform = Transform3D(0.9892307, 0.13718724, 0.051012818, -0.13718724, 0.7475896, 0.649838, 0.05101283, -0.6498379, 0.75835896, -0.053882666, 0.17167807, 0.036360558)
+
+[node name="R_Wrist2_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/R_Arm_Ctrl_Grp/R_Shoulder2_IK_Ctrl_Grp/R_Wrist2_IK_Handle_Grp" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.014478513, 0.0052889828, 0.012621003)
+
+[node name="R_Shoulder1_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/R_Arm_Ctrl_Grp/R_Shoulder1_Main_Ctrl_Grp/R_Shoulder1_FK_Ctrl_Grp" index="0"]
+transform = Transform3D(0.23852506, 0.94891506, -0.20655726, 0.8655807, -0.11129784, 0.48824462, 0.44031334, -0.29525056, -0.8479098, -0.02471879, 0.20159158, 0.010865335)
+
+[node name="R_Elbow1_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/R_Arm_Ctrl_Grp/R_Shoulder1_Main_Ctrl_Grp/R_Shoulder1_FK_Ctrl_Grp" index="1"]
+transform = Transform3D(0.28783128, 0.9352589, -0.20601858, 0.8874605, -0.17962575, 0.42443871, 0.35995394, -0.30500016, -0.8817072, -0.0337966, 0.17135532, -0.0069126165)
+
+[node name="R_Wrist1_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/R_Arm_Ctrl_Grp/R_Shoulder1_Main_Ctrl_Grp/R_Shoulder1_FK_Ctrl_Grp" index="2"]
+transform = Transform3D(0.4019225, 0.8920721, -0.20655729, 0.83244795, -0.262007, 0.4882446, 0.38142985, -0.36818472, -0.8479099, -0.045949735, 0.13388371, -0.022111136)
+
+[node name="R_Shoulder1_FK_Master_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/R_Arm_Ctrl_Grp/R_Shoulder1_Main_Ctrl_Grp" index="1"]
+transform = Transform3D(0.97843456, 7.450581e-09, 0.20655721, 0.103073254, 0.8665986, -0.48824456, -0.1790022, 0.49900588, 0.84791, -0.0007396138, 0.005355493, -0.1079731)
+
+[node name="R_Hand_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/R_Arm_Ctrl_Grp" index="2"]
+transform = Transform3D(-0.040503144, 0.5216662, -0.85218763, 0.7123893, -0.58295935, -0.39071706, -0.7006147, -0.6229146, -0.34801778, -0.0291765, 0.13789925, 0.026264088)
+
+[node name="R_Hand_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/R_Arm_Ctrl_Grp/R_Hand_Ctrl_Grp" index="0"]
+transform = Transform3D(0.99590164, -0.0071968213, -0.09015525, 0.066910304, 0.7293062, 0.68090785, 0.060850404, -0.6841496, 0.72679883, 0, 0, 0)
+
+[node name="R_knuckle_01_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/R_Arm_Ctrl_Grp/R_Hand_Ctrl_Grp/R_Hand_Ctrl/R_knuckle_01_Ctrl_Grp" index="0"]
+transform = Transform3D(1, -2.0906044e-12, 0, 2.0906044e-12, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="R_knuckle_02_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/R_Arm_Ctrl_Grp/R_Hand_Ctrl_Grp/R_Hand_Ctrl/R_knuckle_01_Ctrl_Grp/R_knuckle_01_Ctrl/R_knuckle_02_Ctrl_Grp" index="0"]
+transform = Transform3D(1, -1.839365e-12, 0, 1.839365e-12, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="L_Hand_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/L_Arm_Ctrl_Grp" index="0"]
+transform = Transform3D(0.07563312, 0.44871578, -0.8904683, -0.49115598, 0.7939427, 0.35835856, 0.86778194, 0.41025504, 0.2804378, 0.031076647, 0.15592195, 0.015769891)
+
+[node name="L_Hand_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/L_Arm_Ctrl_Grp/L_Hand_Ctrl_Grp" index="0"]
+transform = Transform3D(0.98090386, 0.059368882, 0.18521003, -0.14273277, 0.86660343, 0.47814825, -0.13211653, -0.495453, 0.8585287, 0, 0, 0)
+
+[node name="L_knuckle_01_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/L_Arm_Ctrl_Grp/L_Hand_Ctrl_Grp/L_Hand_Ctrl/L_knuckle_01_Ctrl_Grp" index="0"]
+transform = Transform3D(1, -1.886124e-12, 0, 1.886124e-12, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="L_knuckle_02_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/L_Arm_Ctrl_Grp/L_Hand_Ctrl_Grp/L_Hand_Ctrl/L_knuckle_01_Ctrl_Grp/L_knuckle_01_Ctrl/L_knuckle_02_Ctrl_Grp" index="0"]
+transform = Transform3D(1, -2.4501091e-12, 0, 2.4501091e-12, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="L_knuckle_03_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/L_Arm_Ctrl_Grp/L_Hand_Ctrl_Grp/L_Hand_Ctrl/L_knuckle_01_Ctrl_Grp/L_knuckle_01_Ctrl/L_knuckle_02_Ctrl_Grp/L_knuckle_02_Ctrl/L_knuckle_03_Ctrl_Grp" index="0"]
+transform = Transform3D(1, -9.229035e-13, 0, 9.229035e-13, 1, 0, 0, 0, 1, 0, 0, 0)
+
+[node name="L_Shoulder2_IK_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/L_Arm_Ctrl_Grp" index="1"]
+transform = Transform3D(0.97843456, 7.450581e-09, 0.20655721, 0.103073254, 0.8665986, -0.48824456, -0.1790022, 0.49900588, 0.84791, -0.0007396136, 0.005355493, -0.1079731)
+
+[node name="L_Elbow2_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/L_Arm_Ctrl_Grp/L_Shoulder2_IK_Ctrl_Grp/L_Elbow2_PV_Ctrl_Grp/Offset_Grp2" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.9581504e-12, 0, 0)
+
+[node name="L_Wrist2_IK_Handle_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/L_Arm_Ctrl_Grp/L_Shoulder2_IK_Ctrl_Grp" index="2"]
+transform = Transform3D(0.9892307, 0.13718724, 0.051012818, -0.13718724, 0.7475896, 0.649838, 0.05101283, -0.6498379, 0.75835896, 0.037832543, 0.15895917, 0.04108994)
+
+[node name="L_Shoulder1_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/L_Arm_Ctrl_Grp/L_Shoulder1_Main_Ctrl_Grp/L_Shoulder1_FK_Ctrl_Grp" index="0"]
+transform = Transform3D(0.23852502, 0.9489152, 0.2065572, -0.8153258, 0.31122494, -0.48824462, -0.52758855, -0.05195287, 0.84790987, 0.023239529, 0.20664358, 0.002091374)
+
+[node name="L_Elbow1_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/L_Arm_Ctrl_Grp/L_Shoulder1_Main_Ctrl_Grp/L_Shoulder1_FK_Ctrl_Grp" index="1"]
+transform = Transform3D(0.31618568, 0.9260577, 0.2060187, -0.82383037, 0.3757063, -0.42443883, -0.47045738, -0.035522982, 0.88170743, 0.031414095, 0.17822506, -0.018842692)
+
+[node name="L_Wrist1_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/L_Arm_Ctrl_Grp/L_Shoulder1_Main_Ctrl_Grp/L_Shoulder1_FK_Ctrl_Grp" index="2"]
+transform = Transform3D(0.40192255, 0.89207196, 0.2065572, -0.7477666, 0.44995785, -0.48824462, -0.5284914, 0.041779935, 0.84790987, 0.04476448, 0.14344029, -0.03870692)
+
+[node name="L_Shoulder1_FK_Master_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Arms_Ctrl_Grp/L_Arm_Ctrl_Grp/L_Shoulder1_Main_Ctrl_Grp" index="1"]
+transform = Transform3D(0.97843456, 7.450581e-09, 0.20655721, 0.103073254, 0.8665986, -0.48824456, -0.1790022, 0.49900588, 0.84791, -0.0007396136, 0.005355493, -0.1079731)
+
+[node name="L_Thigh2_IK_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/L_Leg_Ctrl_Grp" index="0"]
+transform = Transform3D(0.97741115, 0.044738136, 0.20655721, -0.10618057, 0.9489879, 0.29689655, -0.18273771, -0.31212237, 0.9323017, -0.008475821, -0.017403165, 0.0583919)
+
+[node name="L_Knee2_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/L_Leg_Ctrl_Grp/L_Thigh2_IK_Ctrl_Grp/L_Knee2_PV_Ctrl_Grp/Offset_Grp3" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.056341376, 0, 0.009294716)
+
+[node name="L_Ankle2_IK_Handle_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/L_Leg_Ctrl_Grp/L_Thigh2_IK_Ctrl_Grp" index="2"]
+transform = Transform3D(0.97741127, -0.10618058, -0.18273771, 0.04473814, 0.94898796, -0.31212237, 0.20655723, 0.29689658, 0.93230176, 0.03202425, 0.051022083, -0.046373874)
+
+[node name="L_Ankle2_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/L_Leg_Ctrl_Grp/L_Thigh2_IK_Ctrl_Grp/L_Ankle2_IK_Handle_Grp" index="0"]
+transform = Transform3D(0.93680906, 0, 0.3498411, 0, 1, 0, -0.3498411, 0, 0.93680906, 0.021502282, -7.105427e-17, -0.01512221)
+
+[node name="L_Heel_Peel2" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/L_Leg_Ctrl_Grp/L_Thigh2_IK_Ctrl_Grp/L_Ankle2_IK_Handle_Grp/L_Ankle2_Ctrl/L_Tip_Toe/L_Tip_Toe2/L_Heel_Peel" index="0"]
+transform = Transform3D(1, 0, 0, 0, 1, 2.0346838e-12, 0, -2.0346838e-12, 1, 0.015528811, 0.0027280985, 0.012939768)
+
+[node name="L_Thigh1_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/L_Leg_Ctrl_Grp/L_Thigh1_Main_Ctrl_Grp/L_Thigh1_FK_Ctrl_Grp" index="0"]
+transform = Transform3D(-0.025298014, 0.9774111, 0.20982715, -0.91719675, -0.1061808, 0.3840258, 0.39763072, -0.18273768, 0.89916444, 0.013479102, 0.124699764, 0.008274201)
+
+[node name="L_Knee1_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/L_Leg_Ctrl_Grp/L_Thigh1_Main_Ctrl_Grp/L_Thigh1_FK_Ctrl_Grp" index="1"]
+transform = Transform3D(-0.08220246, 0.97741115, 0.19470532, -0.98754686, -0.106180675, 0.11609033, 0.13414192, -0.18273771, 0.9739676, 0.0117874965, 0.06336893, 0.034862854)
+
+[node name="L_Ankle1_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/L_Leg_Ctrl_Grp/L_Thigh1_Main_Ctrl_Grp/L_Thigh1_FK_Ctrl_Grp" index="2"]
+transform = Transform3D(-0.08220246, 0.97741115, 0.19470532, -0.98754686, -0.106180675, 0.11609033, 0.13414192, -0.18273771, 0.9739676, 0.0060813893, -0.0051820073, 0.044174366)
+
+[node name="L_Thigh1_FK_Master_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/L_Leg_Ctrl_Grp/L_Thigh1_Main_Ctrl_Grp" index="1"]
+transform = Transform3D(0.97741115, 0.044738136, 0.20655721, -0.10618057, 0.9489879, 0.29689655, -0.18273771, -0.31212237, 0.9323017, -0.008475821, -0.017403165, 0.0583919)
+
+[node name="R_Thigh2_IK_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/R_Leg_Ctrl_Grp" index="0"]
+transform = Transform3D(0.97741115, 0.044738136, 0.20655721, -0.10618057, 0.9489879, 0.29689655, -0.18273771, -0.31212237, 0.9323017, -0.008475821, -0.017403165, 0.0583919)
+
+[node name="R_Ankle2_IK_Handle_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/R_Leg_Ctrl_Grp/R_Thigh2_IK_Ctrl_Grp" index="2"]
+transform = Transform3D(0.97741127, -0.10618058, -0.18273771, 0.04473814, 0.94898796, -0.31212237, 0.20655723, 0.29689658, 0.93230176, 0.0016681934, 0.04963262, -0.052789055)
+
+[node name="R_Ankle2_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/R_Leg_Ctrl_Grp/R_Thigh2_IK_Ctrl_Grp/R_Ankle2_IK_Handle_Grp" index="0"]
+transform = Transform3D(1, 0, 1.6885809e-12, 0, 1, 0, -1.6885809e-12, 0, 1, -0.020113954, 0, 0.0296841)
+
+[node name="R_Thigh1_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/R_Leg_Ctrl_Grp/R_Thigh1_Main_Ctrl_Grp/R_Thigh1_FK_Ctrl_Grp" index="0"]
+transform = Transform3D(0.025297828, 0.9774112, -0.20982707, 0.9171968, -0.106180586, -0.38402587, -0.3976307, -0.18273765, -0.8991646, -0.016876956, 0.12799744, 0.013949612)
+
+[node name="R_Knee1_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/R_Leg_Ctrl_Grp/R_Thigh1_Main_Ctrl_Grp/R_Thigh1_FK_Ctrl_Grp" index="1"]
+transform = Transform3D(0.08220244, 0.97741115, -0.19470531, 0.98754674, -0.106180675, -0.11609037, -0.13414194, -0.18273768, -0.9739677, -0.01856856, 0.06666662, 0.04053826)
+
+[node name="R_Ankle1_Ctrl_Grp" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/R_Leg_Ctrl_Grp/R_Thigh1_Main_Ctrl_Grp/R_Thigh1_FK_Ctrl_Grp" index="2"]
+transform = Transform3D(0.08220244, 0.97741115, -0.19470531, 0.98754674, -0.106180675, -0.11609037, -0.13414194, -0.18273768, -0.9739677, -0.02427467, -0.0018842976, 0.04984976)
+
+[node name="R_Thigh1_FK_Master_Ctrl" parent="Zombie/Controls/Limbs_Ctrl_Grp/Legs_Ctrl_Grp/R_Leg_Ctrl_Grp/R_Thigh1_Main_Ctrl_Grp" index="1"]
+transform = Transform3D(0.97741115, 0.044738136, 0.20655721, -0.10618057, 0.9489879, 0.29689655, -0.18273771, -0.31212237, 0.9323017, -0.008475821, -0.017403165, 0.0583919)

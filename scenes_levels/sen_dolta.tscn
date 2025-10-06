@@ -1,0 +1,1333 @@
+[gd_scene load_steps=15 format=3 uid="uid://y7qbsaw7eyi1"]
+
+[ext_resource type="Material" uid="uid://uv77si0ay7k6" path="res://materials/M_ProtoGrid_Yellow_Trans.tres" id="1_8coi4"]
+[ext_resource type="PackedScene" uid="uid://b82o5rl68h75n" path="res://blueprints_prefabs/player.tscn" id="1_65pex"]
+[ext_resource type="PackedScene" uid="uid://dox216rwfpxfw" path="res://blueprints_prefabs/zombie.tscn" id="4_c4gnx"]
+[ext_resource type="Material" uid="uid://75fuopaw7nj3" path="res://M_ProtoGrid_Sand.tres" id="6_2kk1g"]
+[ext_resource type="Material" uid="uid://cja3oerih0jcx" path="res://materials/M_ProtoGrid_Green.tres" id="6_8v6kn"]
+[ext_resource type="Material" uid="uid://bt5ja724vgdna" path="res://materials/M_ProtoGridWA_Gray.tres" id="6_ut7cy"]
+
+[sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_pi82i"]
+sky_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+ground_horizon_color = Color(0.66224277, 0.6717428, 0.6867428, 1)
+
+[sub_resource type="Sky" id="Sky_8v6kn"]
+sky_material = SubResource("ProceduralSkyMaterial_pi82i")
+
+[sub_resource type="Environment" id="Environment_ut7cy"]
+background_mode = 2
+sky = SubResource("Sky_8v6kn")
+tonemap_mode = 2
+
+[sub_resource type="SphereMesh" id="SphereMesh_lg74y"]
+flip_faces = true
+radius = 100.0
+height = 100.0
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_j2o8k"]
+shading_mode = 0
+albedo_color = Color(0.270588, 0.482353, 0.780392, 1)
+
+[sub_resource type="NavigationMesh" id="NavigationMesh_pi82i"]
+vertices = PackedVector3Array(-9.35, -0.98, 5.1499996, -8.1, -0.98, 5.1499996, -7.8500004, -0.98, 4.1499996, -9.35, -0.98, -9.85, -5.8500004, -0.98, 6.1499996, -6.3500004, -0.98, 6.3999996, -6.3500004, -0.98, 9.4, 9.9, -0.98, 9.4, -6.1000004, -0.98, 4.1499996, 9.9, -0.98, -9.85, 5.457692, -0.98, -9.85, 3.976923, -0.73, -9.85, -3.4269233, -0.73, -9.85, -4.9076924, -0.98, -9.85, 5.155096, -0.73, -8.837103, 6.6252403, -0.98, -7.355258, 5.1253614, -0.73, -5.845387, 6.645748, -0.98, -1.3438005, 5.160735, -0.73, -1.3547878, 5.1608562, -0.98, 0.15508366, 2.140832, -0.98, 0.1331091, -3.8698435, -0.73, -7.3321676, 0.6556988, -0.73, -1.3377485, -5.3548555, -0.98, -7.343155, -3.849578, -0.73, -4.3404517, -5.369723, -0.98, -5.8722973, -2.3642044, -0.98, 0.15014839, -2.364325, -0.73, -1.3597231, -3.8492165, -0.98, 0.13916111, -3.849337, -0.73, -1.3707104, -5.334108, -0.98, 1.6380444, -3.8549762, -0.73, -8.853025, -7.8500004, -0.98, 6.3999996, -9.35, -0.98, 9.4)
+polygons = [PackedInt32Array(1, 0, 2), PackedInt32Array(2, 0, 3), PackedInt32Array(5, 4, 6), PackedInt32Array(6, 4, 7), PackedInt32Array(7, 4, 8), PackedInt32Array(8, 2, 3), PackedInt32Array(13, 23, 3), PackedInt32Array(3, 30, 8), PackedInt32Array(8, 20, 7), PackedInt32Array(7, 17, 9), PackedInt32Array(9, 15, 10), PackedInt32Array(10, 14, 11), PackedInt32Array(11, 21, 12), PackedInt32Array(12, 31, 13), PackedInt32Array(23, 25, 3), PackedInt32Array(13, 31, 23), PackedInt32Array(30, 26, 8), PackedInt32Array(3, 25, 30), PackedInt32Array(20, 19, 7), PackedInt32Array(8, 26, 20), PackedInt32Array(17, 15, 9), PackedInt32Array(7, 19, 17), PackedInt32Array(15, 14, 10), PackedInt32Array(14, 16, 11), PackedInt32Array(21, 31, 12), PackedInt32Array(11, 16, 21), PackedInt32Array(23, 21, 25), PackedInt32Array(31, 21, 23), PackedInt32Array(30, 28, 26), PackedInt32Array(25, 29, 30), PackedInt32Array(20, 18, 19), PackedInt32Array(26, 22, 20), PackedInt32Array(17, 16, 15), PackedInt32Array(19, 18, 17), PackedInt32Array(15, 16, 14), PackedInt32Array(16, 22, 21), PackedInt32Array(21, 24, 25), PackedInt32Array(28, 27, 26), PackedInt32Array(30, 29, 28), PackedInt32Array(25, 24, 29), PackedInt32Array(20, 22, 18), PackedInt32Array(26, 27, 22), PackedInt32Array(17, 18, 16), PackedInt32Array(22, 24, 21), PackedInt32Array(16, 18, 22), PackedInt32Array(28, 29, 27), PackedInt32Array(24, 27, 29), PackedInt32Array(27, 24, 22), PackedInt32Array(1, 32, 0), PackedInt32Array(0, 32, 33), PackedInt32Array(5, 6, 32), PackedInt32Array(32, 6, 33)]
+cell_height = 0.01
+
+[sub_resource type="BoxMesh" id="BoxMesh_dpynj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_tuiho"]
+
+[node name="sen_dolta" type="Node3D"]
+
+[node name="WorldEnvironment" type="WorldEnvironment" parent="."]
+environment = SubResource("Environment_ut7cy")
+
+[node name="DirectionalLight3D" type="DirectionalLight3D" parent="."]
+transform = Transform3D(0.55514073, -0.82902503, -0.06735814, -0.01367192, -0.090067714, 0.99584186, -0.8316447, -0.5519109, -0.061334193, 0, 4.032, 16.29)
+light_energy = 1.646
+light_indirect_energy = 1.646
+light_volumetric_fog_energy = 1.646
+
+[node name="Player" parent="." instance=ExtResource("1_65pex")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.25, 0.5, 29.10123)
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("SphereMesh_lg74y")
+surface_material_override/0 = SubResource("StandardMaterial3D_j2o8k")
+
+[node name="Zombie02" parent="." instance=ExtResource("4_c4gnx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.3960099, -0.6472757, -7.355007)
+player_path = NodePath("../Player")
+
+[node name="Zombie03" parent="." instance=ExtResource("4_c4gnx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.311906, -0.8164003, 3.9834251)
+player_path = NodePath("../Player")
+
+[node name="Zombie04" parent="." instance=ExtResource("4_c4gnx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.311906, -0.897864, -1.8653479)
+player_path = NodePath("../Player")
+
+[node name="Zombie05" parent="." instance=ExtResource("4_c4gnx")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 8.311906, -0.8164003, 7.7981815)
+player_path = NodePath("../Player")
+
+[node name="Ground2" type="CSGBox3D" parent="."]
+transform = Transform3D(20.2, 0, 0, 0, 1, 0, 0, 0, 20.2, 0.25, -1.5, 12.375)
+use_collision = true
+size = Vector3(1, 1, 0.25)
+material = ExtResource("6_8v6kn")
+
+[node name="TestBuilding" type="Node3D" parent="."]
+
+[node name="Walls" type="Node3D" parent="TestBuilding"]
+
+[node name="Wall00" type="CSGBox3D" parent="TestBuilding/Walls"]
+transform = Transform3D(10, 0, 0, 0, 5, 0, 0, 0, 0.5, 0.25, 1.625, -10)
+use_collision = true
+material = ExtResource("6_ut7cy")
+
+[node name="Wall03" type="CSGBox3D" parent="TestBuilding/Walls"]
+transform = Transform3D(3.8999999, 0, 0, 0, 5, 0, 0, 0, 0.5, -2.75, 1.625, -0.5)
+use_collision = true
+material = ExtResource("6_ut7cy")
+
+[node name="Wall04" type="CSGBox3D" parent="TestBuilding/Walls"]
+transform = Transform3D(3.8999999, 0, 0, 0, 5, 0, 0, 0, 0.5, 3.1, 1.625, -0.5)
+use_collision = true
+material = ExtResource("6_ut7cy")
+
+[node name="Wall05" type="CSGBox3D" parent="TestBuilding/Walls"]
+transform = Transform3D(1.9499999, 0, 0, 0, 1.9999999, 0, 0, 0, 0.5, 0.17499995, 3.125, -0.5)
+use_collision = true
+material = ExtResource("6_ut7cy")
+
+[node name="Wall01" type="CSGBox3D" parent="TestBuilding/Walls"]
+transform = Transform3D(-4.371139e-07, 0, 0.5, 0, 5, 0, -10, 0, -2.1855694e-08, -4.5, 1.625, -5.25)
+use_collision = true
+material = ExtResource("6_ut7cy")
+
+[node name="Wall02" type="CSGBox3D" parent="TestBuilding/Walls"]
+transform = Transform3D(-4.371139e-07, 0, 0.5, 0, 5, 0, -10, 0, -2.1855694e-08, 5, 1.625, -5.2500005)
+use_collision = true
+material = ExtResource("6_ut7cy")
+
+[node name="Ceiling" type="CSGBox3D" parent="TestBuilding/Walls"]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 0.24999985, 4.0025, -5.2500005)
+use_collision = true
+size = Vector3(10, 0.25, 10)
+material = ExtResource("6_ut7cy")
+
+[node name="NavigationRegion3D" type="NavigationRegion3D" parent="TestBuilding"]
+navigation_mesh = SubResource("NavigationMesh_pi82i")
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="TestBuilding/NavigationRegion3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.889988, 0.60621625, 5.28397)
+mesh = SubResource("BoxMesh_dpynj")
+skeleton = NodePath("../../..")
+surface_material_override/0 = ExtResource("1_8coi4")
+
+[node name="StaticBody3D" type="StaticBody3D" parent="TestBuilding/NavigationRegion3D/MeshInstance3D2"]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestBuilding/NavigationRegion3D/MeshInstance3D2/StaticBody3D"]
+shape = SubResource("BoxShape3D_tuiho")
+
+[node name="Ground" type="CSGBox3D" parent="TestBuilding/NavigationRegion3D"]
+transform = Transform3D(20.2, 0, 0, 0, 1, 0, 0, 0, 20.2, 0.25, -1.5, -0.25)
+use_collision = true
+material = ExtResource("6_8v6kn")
+
+[node name="Floor" type="Node3D" parent="TestBuilding/NavigationRegion3D"]
+
+[node name="Floor00" type="CSGBox3D" parent="TestBuilding/NavigationRegion3D/Floor"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 0.25, -0.875, -5.25)
+use_collision = true
+material = ExtResource("6_ut7cy")
+
+[node name="Lights" type="Node3D" parent="TestBuilding"]
+
+[node name="SpotLight3D" type="SpotLight3D" parent="TestBuilding/Lights"]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 0, 3.75, -4.75)
+light_color = Color(0.87549067, 0.8129394, 0.7749433, 1)
+light_energy = 3.365
+spot_range = 6.047
+spot_attenuation = 0.5
+spot_angle = 37.17
+
+[node name="OctSeventh" type="Node3D" parent="."]
+
+[node name="Ground" type="CSGBox3D" parent="OctSeventh"]
+transform = Transform3D(20.2, 0, 0, 0, 1, 0, 0, 0, 20.2, 0.25, -1.5, 30.05)
+use_collision = true
+size = Vector3(2, 1, 1.5)
+material = ExtResource("6_8v6kn")
+
+[node name="GroundFloor" type="Node3D" parent="OctSeventh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.125, 0, 37.5)
+
+[node name="Walls" type="Node3D" parent="OctSeventh/GroundFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, -0.5)
+
+[node name="Wall01" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -10.375, 0.87525, 3.0629997)
+use_collision = true
+size = Vector3(3.125, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall02" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -14.75, 0.87525, -11.312)
+use_collision = true
+size = Vector3(0.5, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall11" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -21.625, 0.87525, -15.062)
+use_collision = true
+size = Vector3(0.875, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall03" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -5.75, 0.87525, -15.062)
+use_collision = true
+size = Vector3(0.45000002, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall26" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -11.875, 0.87525, -15.062)
+use_collision = true
+size = Vector3(0.125, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall27" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -8.625, 0.87525, -15.062)
+use_collision = true
+size = Vector3(0.125, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall28" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -10.25, 2.5158749, -15.062)
+use_collision = true
+size = Vector3(0.2, 4.125, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall25" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -1.8750001, 0.87525, -15.062)
+use_collision = true
+size = Vector3(0.32500002, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall21" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 2.1875, 2.6643124, -15.062)
+use_collision = true
+size = Vector3(0.4875, 2.9375, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall22" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(9.063078, 0.10565457, 0, -4.226183, 0.22657694, 0, 0, 0, 10, 1.8854398, 2.4926546, -15.062)
+use_collision = true
+size = Vector3(0.075, 2.9375, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall23" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(8.191521, -0.14339411, 0, 5.7357645, 0.204788, 0, 0, 0, 10, 2.910495, 2.5542397, -15.062)
+use_collision = true
+size = Vector3(0.075, 2.9375, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall24" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(10, -5.5879354e-09, 0, -5.9604645e-08, 0.25, 0, 0, 0, 10, 2.3936677, 2.3888593, -15.062)
+use_collision = true
+size = Vector3(0.075, 2.9375, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall20" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 12.75, 0.87525, -15.062)
+use_collision = true
+size = Vector3(1.625, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall04" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 10.25, 0.87525, 18.063)
+use_collision = true
+size = Vector3(1, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall05" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 17.75, 0.87525, 0.31299973)
+use_collision = true
+size = Vector3(0.5, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall06" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, 20.562, 0.87525, -7.375)
+use_collision = true
+size = Vector3(1.6, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall07" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, 15.562, 0.87525, 9.1875)
+use_collision = true
+size = Vector3(1.8375, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall08" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, 4.9369993, 0.87525, 10.875)
+use_collision = true
+size = Vector3(1.5, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall12" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, 4.937, 0.87525, 0.1875)
+use_collision = true
+size = Vector3(0.6375, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall18" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, 4.937, 2.2674375, -4)
+use_collision = true
+size = Vector3(0.2, 6.125, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall14" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, -10.063, -0.031000018, 0.25)
+use_collision = true
+size = Vector3(0.5, 5.75, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall16" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, -17.236862, -0.23412502, 0.25)
+use_collision = true
+size = Vector3(0.5, 4.125, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall15" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, -10.063, 1.06275, 1.5)
+use_collision = true
+size = Vector3(0.25, 3, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall17" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, -10.063, -0.12475002, -3.125)
+use_collision = true
+size = Vector3(0.175, 4.5, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall13" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, 4.9370003, 0.87525, -10.1875)
+use_collision = true
+size = Vector3(1.0375, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall09" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, -26.313, 0.87525, -6)
+use_collision = true
+size = Vector3(1.875, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall10" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, -12.563, 0.87525, -13.5)
+use_collision = true
+size = Vector3(0.375, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall19" type="CSGBox3D" parent="OctSeventh/GroundFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, -16.938, 0.87525, -13.5)
+use_collision = true
+size = Vector3(0.375, 17.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Floors" type="Node3D" parent="OctSeventh/GroundFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, -3)
+
+[node name="Floor01" type="CSGBox3D" parent="OctSeventh/GroundFloor/Floors"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -3.5, -0.875, -3.5)
+use_collision = true
+size = Vector3(1.75, 1, 2)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor03" type="CSGBox3D" parent="OctSeventh/GroundFloor/Floors"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -19.75, -0.875, -3.5)
+use_collision = true
+size = Vector3(1.5, 1, 2)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor02" type="CSGBox3D" parent="OctSeventh/GroundFloor/Floors"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 10.25, -0.875, -4.75)
+use_collision = true
+size = Vector3(1, 1, 1.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor06" type="CSGBox3D" parent="OctSeventh/GroundFloor/Floors"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 10.875, -0.875, 5.25)
+use_collision = true
+size = Vector3(1.125, 1, 0.25)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor05" type="CSGBox3D" parent="OctSeventh/GroundFloor/Floors"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 10.25, -0.875, 14)
+use_collision = true
+size = Vector3(1.25, 1, 1.5)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor04" type="CSGBox3D" parent="OctSeventh/GroundFloor/Floors"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 17.75, -0.875, -4.75)
+use_collision = true
+size = Vector3(0.5, 1, 1.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillars" type="Node3D" parent="OctSeventh/GroundFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, -1.875)
+
+[node name="Pillar" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, -5.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar4" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.8875, -4.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar45" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 0.8875, -4.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar12" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.8875, -10.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar15" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 0.8875, -10.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar13" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.8875, -10.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar41" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.8875, -13.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar42" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 0.8875, -13.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar43" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 0.8875, -13.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar44" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 0.8875, -13.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar40" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 0.8875, -10.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar5" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.8875, 1.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar6" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.8875, 7.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar27" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 0.8875, 1.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar39" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 0.8875, 1.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar28" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 0.8875, 7.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar24" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 0.8875, -4.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar25" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 0.8875, 1.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar26" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 0.8875, 7.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar7" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.8875, 13.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar17" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 0.8875, 13.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar18" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 0.8875, 13.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar29" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 0.8875, 19.125)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar30" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 0.8875, 19.125)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar14" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 0.8875, 19.25)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar3" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, -10.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar16" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.875, -10.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar46" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.875, -13.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar2" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, -1.25)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar9" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.875, -5.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar10" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.875, -10.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar47" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, -13.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar48" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.875, -13.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar50" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8, 0.875, -13.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar49" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.25, 0.875, -13.375)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar31" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.25, 0.875, -9.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar32" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 0.875, -9.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar33" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.875, -9.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar11" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.875, -1.25)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar19" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.875, 4.125)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar21" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.875, -5.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar22" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.875, -1.25)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar23" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 0.875, 4.125)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar20" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 0.875, 4.125)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar34" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.375, 0.875, 4.125)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar8" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.375, 0.875, -1.25)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar35" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 0.875, 4.125)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar36" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 0, -1.25)
+use_collision = true
+size = Vector3(0.75, 1.5, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar37" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.875, 4.125)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar38" type="CSGBox3D" parent="OctSeventh/GroundFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 0.875, -1.25)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Stairs" type="Node3D" parent="OctSeventh/GroundFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.125, 0, -5.25)
+
+[node name="CurvedStairs" type="Node3D" parent="OctSeventh/GroundFloor/Stairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.125, -0.75, 0.75)
+
+[node name="StairStep" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1.375, 0.125, 0.25)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep2" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.9961947, 0, 0.08715574, 0, 1, 0, -0.08715574, 0, 0.9961947, -1.3423166, 0.325, 0.623573)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep3" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.9848078, 0, 0.17364816, 0, 1, 0, -0.17364816, 0, 0.9848078, -1.2771986, 0.525, 0.99287593)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep4" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.9659259, 0, 0.25881904, 0, 1, 0, -0.25881904, 0, 0.9659259, -1.1801414, 0.7125, 1.3550981)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep5" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.9396927, 0, 0.34202015, 0, 1, 0, -0.34202015, 0, 0.9396927, -1.0518839, 0.9125001, 1.7074828)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep6" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.9063079, 0, 0.42261827, 0, 1, 0, -0.42261827, 0, 0.9063079, -0.8934021, 1.1000001, 2.0473483)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep7" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.8660255, 0, 0.5, 0, 1, 0, -0.5, 0, 0.8660255, -0.7059021, 1.3000002, 2.3721077)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep8" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.8191522, 0, 0.57357645, 0, 1, 0, -0.57357645, 0, 0.8191522, -0.49081093, 1.5000002, 2.6792898)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep9" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.7660446, 0, 0.64278764, 0, 1, 0, -0.64278764, 0, 0.7660446, -0.2497654, 1.6875002, 2.9665565)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep10" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.70710695, 0, 0.7071068, 0, 1, 0, -0.7071068, 0, 0.70710695, 0.015399456, 1.8875003, 3.23172)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep11" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.6427878, 0, 0.7660445, 0, 1, 0, -0.7660445, 0, 0.6427878, 0.3026662, 2.0750003, 3.4727669)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep12" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.5735766, 0, 0.8191521, 0, 1, 0, -0.8191521, 0, 0.5735766, 0.609848, 2.2625003, 3.6878586)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep13" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.50000024, 0, 0.8660255, 0, 1, 0, -0.8660255, 0, 0.50000024, 0.9346075, 2.4625003, 3.8753586)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep14" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.4226185, 0, 0.90630794, 0, 1, 0, -0.90630794, 0, 0.4226185, 1.2744732, 2.6625004, 4.03384)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep15" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.3420204, 0, 0.9396928, 0, 1, 0, -0.9396928, 0, 0.3420204, 1.6268578, 2.8625004, 4.162098)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep16" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.25881928, 0, 0.96592605, 0, 1, 0, -0.96592605, 0, 0.25881928, 1.9890804, 3.0500004, 4.2591553)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep17" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.17364842, 0, 0.98480797, 0, 1, 0, -0.98480797, 0, 0.17364842, 2.3583832, 3.2375, 4.324272)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep18" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(0.087155975, 0, 0.99619496, 0, 1, 0, -0.99619496, 0, 0.087155975, 2.7319565, 3.4249995, 4.3569565)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep19" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/CurvedStairs"]
+transform = Transform3D(2.1606684e-07, 0, 1.0000004, 0, 1, 0, -1.0000004, 0, 2.1606684e-07, 3.1069565, 3.612499, 4.3569565)
+use_collision = true
+size = Vector3(2.5, 0.188, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StraightStair" type="Node3D" parent="OctSeventh/GroundFloor/Stairs"]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 15.75, -0.75, -2)
+
+[node name="StairStep" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 0.13100004, -0.5)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep2" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 0.38100004, -0.125)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep3" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 0.63100004, 0.25)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep4" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 0.88100004, 0.625)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep5" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 1.131, 1)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep6" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 1.381, 1.375)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep7" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 1.631, 1.75)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep8" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 1.881, 2.125)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep9" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 2.131, 2.5)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep10" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 2.381, 2.875)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep11" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 2.631, 3.25)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep12" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 2.881, 3.625)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep13" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 3.131, 4)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep14" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 3.381, 4.375)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="StairStep15" type="CSGBox3D" parent="OctSeventh/GroundFloor/Stairs/StraightStair"]
+transform = Transform3D(0.95, 0, 0, 0, 1, 0, 0, 0, 1, -2.495, 3.631, 4.75)
+use_collision = true
+size = Vector3(5, 0.25, 0.5)
+material = ExtResource("6_ut7cy")
+
+[node name="Props" type="Node3D" parent="OctSeventh/GroundFloor"]
+
+[node name="Sandbag" type="CSGBox3D" parent="OctSeventh/GroundFloor/Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -9.125, -0.23412514, -15.562)
+use_collision = true
+size = Vector3(2, 1, 0.75)
+material = ExtResource("6_2kk1g")
+
+[node name="Sandbag2" type="CSGBox3D" parent="OctSeventh/GroundFloor/Props"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.625, -0.23412514, -15.562)
+use_collision = true
+size = Vector3(2, 1, 0.75)
+material = ExtResource("6_2kk1g")
+
+[node name="UpperFloor" type="Node3D" parent="OctSeventh"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 35)
+
+[node name="Floors2" type="Node3D" parent="OctSeventh/UpperFloor"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.875, -35)
+
+[node name="Floor01" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 0.7499998, 3.5, 31)
+use_collision = true
+size = Vector3(0.90000004, 3.25, 1.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor02" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -6.75, 3.5, 39.125)
+use_collision = true
+size = Vector3(0.6, 3.25, 0.125)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor03" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -8, 3.5, 26)
+use_collision = true
+size = Vector3(0.85, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor04" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(4.226182, 0, -9.063079, 0, 0.25, 0, 9.063079, 0, 4.226182, -3.7751436, 3.5, 32.334778)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.26250002)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor05" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(8.191521, 0, -5.7357655, 0, 0.25, 0, 5.7357655, 0, 8.191521, -6.077059, 3.5, 29.450342)
+use_collision = true
+size = Vector3(0.375, 3.25, 0.26250002)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor06" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -11, 3.5, 34.75)
+use_collision = true
+size = Vector3(0.25, 3.25, 1)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor12" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -21.4375, 3.5, 39.125)
+use_collision = true
+size = Vector3(0.9125, 3.25, 0.125)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor18" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -19.75, 3.5, 37.875)
+use_collision = true
+size = Vector3(0.25, 3.25, 0.125)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor16" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -25.375, 3.5, 31.625)
+use_collision = true
+size = Vector3(0.125, 3.25, 1.125)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor17" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -23.5, 3.5, 34.625)
+use_collision = true
+size = Vector3(0.25, 3.25, 0.375)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor19" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -23.8125, 3.5, 26.75)
+use_collision = true
+size = Vector3(0.1875, 3.25, 0.175)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor20" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -19.9375, 3.5, 26.5625)
+use_collision = true
+size = Vector3(0.16250001, 3.25, 0.1375)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor13" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -21.625, 3.5, 24.125)
+use_collision = true
+size = Vector3(0.875, 3.25, 0.375)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor14" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -14.9375, 3.5, 29.75)
+use_collision = true
+size = Vector3(0.5375, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor15" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -19.125, 3.5, 33.75)
+use_collision = true
+size = Vector3(0.375, 3.25, 0.375)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor07" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 10.25, 3.5, 38.5)
+use_collision = true
+size = Vector3(1, 3.25, 3.25)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor08" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 15.625, 3.5, 29.625)
+use_collision = true
+size = Vector3(0.075, 3.25, 1.475)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor09" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 18.125, 3.5, 23.75)
+use_collision = true
+size = Vector3(0.425, 3.25, 0.3)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor10" type="CSGBox3D" parent="OctSeventh/UpperFloor/Floors2"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, 18.125, 3.5, 33.8125)
+use_collision = true
+size = Vector3(0.425, 3.25, 0.6375)
+material = ExtResource("6_ut7cy")
+
+[node name="Walls" type="Node3D" parent="OctSeventh/UpperFloor"]
+
+[node name="Wall22" type="CSGBox3D" parent="OctSeventh/UpperFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, -12.563, 5.06275, -4)
+use_collision = true
+size = Vector3(1.875, 16.25, 0.063)
+material = ExtResource("6_ut7cy")
+
+[node name="Wall23" type="CSGBox3D" parent="OctSeventh/UpperFloor/Walls"]
+transform = Transform3D(-4.371139e-07, 0, -10, 0, 0.25, 0, 10, 0, -4.371139e-07, -3.6855001, 5.06275, 5.125)
+use_collision = true
+size = Vector3(0.05, 16.25, 1.7125)
+material = ExtResource("6_ut7cy")
+
+[node name="Ceiling" type="Node3D" parent="OctSeventh/UpperFloor"]
+
+[node name="Floor11" type="CSGBox3D" parent="OctSeventh/UpperFloor/Ceiling"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -11.625, 6.65625, -10.5625)
+use_collision = true
+size = Vector3(0.125, 3.25, 0.5625)
+material = ExtResource("6_ut7cy")
+
+[node name="Floor12" type="CSGBox3D" parent="OctSeventh/UpperFloor/Ceiling"]
+transform = Transform3D(10, 0, 0, 0, 0.25, 0, 0, 0, 10, -7.0625, 6.65625, -10)
+use_collision = true
+size = Vector3(0.7875, 3.25, 0.075)
+material = ExtResource("6_ut7cy")
+
+[node name="Props" type="Node3D" parent="OctSeventh/UpperFloor"]
+
+[node name="Pillars" type="Node3D" parent="OctSeventh/UpperFloor"]
+
+[node name="Pillar46" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.625, -5)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar47" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 4.6375, -4)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar48" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 4.6375, -4)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar49" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 4.6375, -10)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar50" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 4.6375, -10)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar51" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 4.6375, -10)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar52" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 4.6375, -12.75)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar53" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 4.6375, -12.75)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar54" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.5, 4.6375, -12.75)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar55" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 4.6375, -12.75)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar56" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 4.6375, -10)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar57" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 4.6375, 2)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar58" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 4.6375, 8)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar59" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 4.6375, 2)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar60" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 20.25, 4.6375, 2)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar61" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 4.6375, 8)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar62" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 4.6375, -4)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar63" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 4.6375, 2)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar64" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 4.6375, 8)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar65" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 4.6375, 14)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar66" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 4.6375, 14)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar67" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 4.6375, 14)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar68" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 5.25, 4.6375, 19.75)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar69" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 15.25, 4.6375, 19.75)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar70" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10.5, 4.6375, 19.875)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar71" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.625, -10)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar72" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4.625, -10)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar73" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.625, -0.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar74" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 4.625, -5)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar75" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 4.625, -10)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar76" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.25, 4.625, -9)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar91" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -12.25, 4.625, -13)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar77" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 4.625, -9)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar78" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 4.625, -9)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar79" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 4.625, -0.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar80" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.625, 4.75)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar81" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4.625, -5)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar82" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4.625, -0.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar83" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 4.625, 4.75)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar84" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -3.5, 4.625, 4.75)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar85" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.375, 4.625, 4.75)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar86" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -10.375, 4.625, -0.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar87" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 4.625, 4.75)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar88" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -17.25, 3.75, -0.625)
+use_collision = true
+size = Vector3(0.75, 1.5, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar89" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 4.625, 4.75)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")
+
+[node name="Pillar90" type="CSGBox3D" parent="OctSeventh/UpperFloor/Pillars"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -26, 4.625, -0.625)
+use_collision = true
+size = Vector3(0.75, 3.25, 0.75)
+material = ExtResource("6_ut7cy")

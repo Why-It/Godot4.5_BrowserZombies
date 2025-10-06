@@ -1,0 +1,24 @@
+[gd_scene load_steps=3 format=3 uid="uid://1k43cwht3bw7"]
+
+[ext_resource type="Script" uid="uid://dywh5ohuqxt5d" path="res://scripts/bullet_hole.gd" id="1_u7u4v"]
+[ext_resource type="Texture2D" uid="uid://b33ea6sslpyv7" path="res://textures/bullet_hole_wound.png" id="2_u7u4v"]
+
+[node name="bullet_hole" type="Node3D"]
+transform = Transform3D(1, 0, 0, 0, -4.37114e-08, 1, 0, -1, -4.37114e-08, 0, 0, 0)
+script = ExtResource("1_u7u4v")
+
+[node name="Sprite3D" type="Sprite3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.001)
+texture = ExtResource("2_u7u4v")
+
+[node name="Timer" type="Timer" parent="."]
+wait_time = 5.0
+one_shot = true
+autostart = true
+
+[node name="fade_timer" type="Timer" parent="."]
+wait_time = 15.0
+one_shot = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]
+[connection signal="timeout" from="fade_timer" to="." method="_on_fade_timer_timeout"]
