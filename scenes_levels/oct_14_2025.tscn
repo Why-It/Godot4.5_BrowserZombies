@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://ca4wv0hdij1w5"]
+
+[ext_resource type="PackedScene" uid="uid://b82o5rl68h75n" path="res://blueprints_prefabs/player.tscn" id="1_m6478"]
+[ext_resource type="PackedScene" uid="uid://dox216rwfpxfw" path="res://blueprints_prefabs/zombie.tscn" id="2_x3tm5"]
+[ext_resource type="Material" uid="uid://cja3oerih0jcx" path="res://materials/M_ProtoGrid_Green.tres" id="3_twf1r"]
+
+[node name="Oct-14-2025" type="Node3D"]
+
+[node name="player" parent="." instance=ExtResource("1_m6478")]
+
+[node name="Zombies" type="Node3D" parent="."]
+
+[node name="Zombie" parent="Zombies" instance=ExtResource("2_x3tm5")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -12.75)
+
+[node name="Ground" type="CSGBox3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1, 0)
+size = Vector3(100, 1, 100)
+material = ExtResource("3_twf1r")
+
+[node name="Building" type="Node3D" parent="."]

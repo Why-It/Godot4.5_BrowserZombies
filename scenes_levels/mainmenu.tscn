@@ -1,6 +1,6 @@
 [gd_scene load_steps=3 format=3 uid="uid://ruaai2xhsxvp"]
 
-[ext_resource type="Script" path="res://scripts/mainmenu.gd" id="1_el5u1"]
+[ext_resource type="Script" uid="uid://dqkntty8p7ehq" path="res://scripts/mainmenu.gd" id="1_el5u1"]
 [ext_resource type="Texture2D" uid="uid://g8eerc14a7ls" path="res://textures/test_00.png" id="2_tk455"]
 
 [node name="control" type="Control"]
@@ -84,12 +84,14 @@ layout_mode = 2
 [node name="map_selector" type="OptionButton" parent="boxcontainer/hbox_mid/vbox_mid"]
 layout_mode = 2
 alignment = 1
-item_count = 2
 selected = 0
-popup/item_0/text = "Sen Dolta"
+item_count = 3
+popup/item_0/text = "Oct. 7th 2025"
 popup/item_0/id = 0
 popup/item_1/text = "test"
 popup/item_1/id = 1
+popup/item_2/text = "Oct. 14th 2025"
+popup/item_2/id = 2
 
 [node name="padding3" type="HSeparator" parent="boxcontainer/hbox_mid/vbox_mid"]
 modulate = Color(1, 1, 1, 0)

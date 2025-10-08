@@ -26,7 +26,8 @@ func switch_selected_map(index):
 		selected_map = "res://scenes_levels/sen_dolta.tscn"
 	elif index == 1:
 		selected_map = "res://scenes_levels/test_scene.tscn"
-	
+	elif index == 2:
+		selected_map = "res://scenes_levels/oct_14_2025.tscn"
 	print(selected_map)
 
 
