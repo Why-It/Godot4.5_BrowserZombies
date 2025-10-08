@@ -1,8 +1,11 @@
+WorldEnvironment
+DirectionalLight3D
 Node3D
+NavigationRegion3D
+CSGBox3D
 SubViewport
 SpotLight3D
 RayCast3D
-CSGBox3D
 CSGMesh3D
 Timer
 Control
@@ -10,5 +13,3 @@ BoxContainer
 TextureRect
 AnimationTree
 AnimationPlayer
-NavigationAgent3D
-NavigationRegion3D

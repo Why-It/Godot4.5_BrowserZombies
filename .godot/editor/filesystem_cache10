@@ -1,6 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1759515338
-M_ProtoGrid_Sand.tres::StandardMaterial3D::2308314388410400546::1759514843::0::1::::<><><>0<>0<><>::uid://m48kcr6mvec6::::res://textures/prototype_textures/png_prototype_07.png
+::res://::1759924873
 ::res://animations/::1759166875
 guns.res::AnimationLibrary::6274752843136868062::1729791765::0::1::::<><><>0<>0<><>::
 Player.res::AnimationLibrary::1087933840926383087::1759154793::0::1::::<><><>0<>0<><>::
@@ -16,10 +15,11 @@ pause_menu.tscn::PackedScene::5031834203145840855::1758818839::0::1::::<><><>0<>
 player.tscn::PackedScene::4759295246166372465::1759493416::0::1::::<><><>0<>0<><>::uid://cd2llem3ltlka::::res://scripts/player.gd<>uid://cdxptr0ahbrr0::::res://blueprints_prefabs/pause_menu.tscn<>uid://negvdlc24mmo::::res://blueprints_prefabs/auto_assualt_rifle.tscn<>uid://dhvc2tc60ujvs::::res://blueprints_prefabs/assualt_rifle.tscn<>uid://d2qlamd3kxdkb::::res://textures/icon.svg<>uid://5nclj8qnidtt::::res://blueprints_prefabs/handgun.tscn<>uid://0ekvphpapcvl::::res://textures/blood_splatter256.png<>uid://prad115pbayh::::res://animations/Player.res
 player_hud.tscn::PackedScene::675605677314594813::1729610342::0::1::::<><><>0<>0<><>::uid://d2qlamd3kxdkb::::res://textures/icon.svg
 zombie.tscn::PackedScene::8191073995293760100::1759493383::0::1::::<><><>0<>0<><>::uid://b2i2kxsf4gpcd::::res://scripts/enemy.gd<>uid://dosbg8rux54m8::::res://materials/M_Zombie.tres<>uid://rr0nv2m1f6t0::::res://animations/Zombie.res
-::res://materials/::1759515338
-M_ProtoGridWA_Gray.tres::StandardMaterial3D::3782488222175261734::1759150904::0::1::::<><><>0<>0<><>::uid://m48kcr6mvec6::::res://textures/prototype_textures/png_prototype_07.png
+::res://materials/::1759923532
+M_ProtoGridWA_Gray.tres::StandardMaterial3D::3782488222175261734::1759515470::0::1::::<><><>0<>0<><>::uid://m48kcr6mvec6::::res://textures/prototype_textures/png_prototype_07.png
 M_ProtoGrid_Gray.tres::StandardMaterial3D::8045694830548041768::1759150904::0::1::::<><><>0<>0<><>::uid://m48kcr6mvec6::::res://textures/prototype_textures/png_prototype_07.png
 M_ProtoGrid_Green.tres::StandardMaterial3D::5406266273769529591::1759154636::0::1::::<><><>0<>0<><>::uid://m48kcr6mvec6::::res://textures/prototype_textures/png_prototype_07.png
+M_ProtoGrid_Sand.tres::StandardMaterial3D::2308314388410400546::1759515470::0::1::::<><><>0<>0<><>::uid://cl2pgtepgyvwr::::res://textures/prototype_textures/png_prototype_69.png
 M_ProtoGrid_Yellow_Trans.tres::StandardMaterial3D::1449129853684990675::1729772046::0::1::::<><><>0<>0<><>::uid://m48kcr6mvec6::::res://textures/prototype_textures/png_prototype_07.png
 M_Zombie.tres::StandardMaterial3D::8179137853813915469::1758738249::0::1::::<><><>0<>0<><>::uid://d0lqopjglaul0::::res://textures/lambert3SG_albedo.jpg
 ::res://Mesh/::1759153995
@@ -27,11 +27,12 @@ SM_Floor10x10.tscn::PackedScene::7313442282849746833::1759153995::0::1::::<><><>
 SM_ProtoCube.tscn::PackedScene::4300045773958482398::1759151645::0::1::::<><><>0<>0<><>::uid://bt5ja724vgdna::::res://materials/M_ProtoGridWA_Gray.tres
 ::res://Mesh/Zombie/::1759148688
 Zombie.fbx::PackedScene::8766964260738072012::1758735797::1759148672::1::::<><><>0<>0<>cc750532273b1bee0a887cc5bf35af1c<>res://.godot/imported/Zombie.fbx-0494de711eee1a5a66dd7854400af5d8.scn::
-::res://scenes_levels/::1759514191
-mainmenu.tscn::PackedScene::1234498359879370325::1729793129::0::1::::<><><>0<>0<><>::res://scripts/mainmenu.gd<>uid://g8eerc14a7ls::::res://textures/test_00.png
-sen_dolta.tscn::PackedScene::1751566539583688298::1759514191::0::1::::<><><>0<>0<><>::uid://uv77si0ay7k6::::res://materials/M_ProtoGrid_Yellow_Trans.tres<>uid://b82o5rl68h75n::::res://blueprints_prefabs/player.tscn<>uid://dox216rwfpxfw::::res://blueprints_prefabs/zombie.tscn<>uid://cja3oerih0jcx::::res://materials/M_ProtoGrid_Green.tres<>uid://bt5ja724vgdna::::res://materials/M_ProtoGridWA_Gray.tres
+::res://scenes_levels/::1759923958
+mainmenu.tscn::PackedScene::1234498359879370325::1759923958::0::1::::<><><>0<>0<><>::uid://dqkntty8p7ehq::::res://scripts/mainmenu.gd<>uid://g8eerc14a7ls::::res://textures/test_00.png
+oct_14_2025.tscn::PackedScene::4834082921811566682::1759923761::0::1::::<><><>0<>0<><>::uid://b82o5rl68h75n::::res://blueprints_prefabs/player.tscn<>uid://dox216rwfpxfw::::res://blueprints_prefabs/zombie.tscn<>uid://cja3oerih0jcx::::res://materials/M_ProtoGrid_Green.tres
+sen_dolta.tscn::PackedScene::1751566539583688298::1759923538::0::1::::<><><>0<>0<><>::uid://uv77si0ay7k6::::res://materials/M_ProtoGrid_Yellow_Trans.tres<>uid://b82o5rl68h75n::::res://blueprints_prefabs/player.tscn<>uid://dox216rwfpxfw::::res://blueprints_prefabs/zombie.tscn<>uid://75fuopaw7nj3::::res://materials/M_ProtoGrid_Sand.tres<>uid://cja3oerih0jcx::::res://materials/M_ProtoGrid_Green.tres<>uid://bt5ja724vgdna::::res://materials/M_ProtoGridWA_Gray.tres
 test_scene.tscn::PackedScene::1102168004693929405::1759148639::0::1::::<><><>0<>0<><>::uid://cja3oerih0jcx::::res://materials/M_ProtoGrid_Green.tres<>uid://b82o5rl68h75n::::res://blueprints_prefabs/player.tscn<>uid://dox216rwfpxfw::::res://blueprints_prefabs/zombie.tscn<>uid://uv77si0ay7k6::::res://materials/M_ProtoGrid_Yellow_Trans.tres
-::res://scripts/::1759509337
+::res://scripts/::1759923958
 assualt_rifle.gd::GDScript::8681777613953391690::1758907808::0::1::::<>Node3D<><>0<>0<><>::
 auto_assualt_rifle.gd::GDScript::4376082653888082509::1758908118::0::1::::<>Node3D<><>0<>0<><>::
 bullet_hole.gd::GDScript::8889689948819457347::1729518747::0::1::::<>Node3D<><>0<>0<><>::
@@ -39,7 +40,7 @@ enemy.gd::GDScript::4299692936805914019::1759493380::0::1::::<>CharacterBody3D<>
 global.gd::GDScript::6046604459758603938::1729168288::0::1::::<>Node<><>0<>0<><>::
 gun_test.gd::GDScript::4177132100409690441::1758716334::0::1::::<>Node3D<><>0<>0<><>::
 handgun.gd::GDScript::5414743855924390956::1758908122::0::1::::<>Node3D<><>0<>0<><>::
-mainmenu.gd::GDScript::8303751614358211486::1729174491::0::1::::<>Node<><>0<>0<><>::
+mainmenu.gd::GDScript::8303751614358211486::1759923958::0::1::::<>Node<><>0<>0<><>::
 pause_menu.gd::GDScript::7576773317268574305::1758818830::0::1::::<>Control<><>0<>0<><>::
 player.gd::GDScript::5039833858232003144::1759509337::0::1::::<>CharacterBody3D<><>0<>0<><>::
 ::res://textures/::1759494553
@@ -55,7 +56,7 @@ rifle128.png::CompressedTexture2D::1072193638837446360::1758725455::1758725456::
 Screenshot 2023-10-13 130141.png::CompressedTexture2D::4979117494936973934::1759494553::1759494553::1::::<><><>0<>0<>99653953165b207a968708498784583c<>res://.godot/imported/Screenshot 2023-10-13 130141.png-df273fe11f5f9fbf91e54bbcc699294c.ctex::
 test_00.jpg::CompressedTexture2D::1188788465123744152::1728996173::1728996188::1::::<><><>0<>0<>91d1a29469ff201e432dfa90cf107f0a<>res://.godot/imported/test_00.jpg-0401ece8b45a9f955041f144547ca5b0.ctex::
 test_00.png::CompressedTexture2D::489508436065525784::1728996145::1728996188::1::::<><><>0<>0<>4936028f3a567f678c319fd610c7c5bd<>res://.godot/imported/test_00.png-76515f256be7a56edbb21d550a36b0ea.ctex::
-::res://textures/prototype_textures/::1759515341
+::res://textures/prototype_textures/::1759515355
 png_protorype_02.png::CompressedTexture2D::8816096233280181317::1729254690::1729254913::1::::<><><>0<>0<>6df6555501050812edc0c5f93b91503d<>res://.godot/imported/png_protorype_02.png-f5420994fbdea538c42a011445903c45.ctex::
 png_prototype_01.png::CompressedTexture2D::5346643074033743769::1729254690::1729254942::1::::<><><>0<>0<>5c31352aaeea4981172eace7cdadf85f<>res://.godot/imported/png_prototype_01.png-41c56bfc4e94a30d798fabe3c4bdc98b.s3tc.ctex::
 png_prototype_03.png::CompressedTexture2D::2037152892959365433::1729254690::1729256054::1::::<><><>0<>0<>c447bb6cc5a1f73270281499f509e310<>res://.godot/imported/png_prototype_03.png-5dd06740f24b4457a3d02514ab77f91f.s3tc.ctex::

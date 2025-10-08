@@ -128,7 +128,11 @@ fov = 80.0
 
 [node name="RayCast3D" type="RayCast3D" parent="head/Camera3D"]
 target_position = Vector3(0, 0, -100)
-collision_mask = 3
+debug_shape_custom_color = Color(0, 0.670588, 0.694118, 0.360784)
+
+[node name="EnemyCast" type="RayCast3D" parent="head/Camera3D"]
+target_position = Vector3(0, 0, -100)
+collision_mask = 2
 debug_shape_custom_color = Color(0, 0.670588, 0.694118, 0.360784)
 
 [node name="arms" type="Node3D" parent="head/Camera3D"]
@@ -443,5 +447,5 @@ parameters/conditions/Run = false
 parameters/conditions/Walk = false
 
 [connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
-[connection signal="timeout" from="healing_cooldown" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="healing_cooldown" to="." method="_on_healing_cooldown_timeout"]
+[connection signal="timeout" from="healing_cooldown" to="." method="_on_fire_rate_timeout"]
