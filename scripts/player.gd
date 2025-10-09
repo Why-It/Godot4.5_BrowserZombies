@@ -24,6 +24,7 @@ const fov_change = 1.5
 @onready var camera = $head/Camera3D
 @onready var raycast = $head/Camera3D/RayCast3D
 var gun_raycast = null
+@onready var enemy_cast = $head/Camera3D/EnemyCast
 @onready var recenter_head_target = camera.rotation
 
 @onready var pause_menu = $pause_menu
@@ -35,6 +36,7 @@ var gun_raycast = null
 
 var max_camera_shake = 150
 var min_camera_shake = 100
+var camera_shake_mult = 1.0
 @onready var fire_rate = $fire_rate
 
 @onready var magazine_text = $player_hud/BoxContainer3/BoxContainer3/BoxContainer2/BoxContainer2/magazine
@@ -71,7 +73,7 @@ func _ready():
 	weapons.append($head/Camera3D/arms/attach_point/weapon/handgun)
 	equipped_gun = weapons[current_weapon_index]
 	Switch_Weapon()
-	update_points_text()
+	update_ammo_count(equipped_gun.cur_mag_ammo,equipped_gun.cur_reserve_ammo)
 	state_machine = anim_tree.get("parameters/playback")
 	anim_tree.set("active", true)
 
@@ -90,13 +92,14 @@ func _input(event):
 		Update_Weapon_Array("GiveAllWeapons")
 	
 	if event.is_action_pressed("shoot"):
-		recenter_head_target = camera.rotation
+		##recenter_head_target = camera.rotation
+		pass
 	if event.is_action_released("shoot"):
 		is_trigger_pulled = false
 
 
 var recenter_head = false
-var recenter_head_speed = 0.4
+var recenter_head_speed = 0.5
 var recenter_head_time = 0.0
 func _physics_process(delta):
 	match state_machine.get_current_node():
@@ -135,6 +138,9 @@ func _physics_process(delta):
 	
 	if Input.is_action_pressed("pause"):
 		pause_menu._pause()
+	
+	if Input.is_action_pressed("reload"):
+		reload_gun()
 	
 	# Add the gravity.
 	if not is_on_floor():
@@ -175,8 +181,10 @@ func _physics_process(delta):
 		velocity.z = lerp(velocity.z, direction.z * cur_speed, delta * 0.5)
 	
 	if recenter_head:
+		
 		recenter_head_time += delta * recenter_head_speed
 		camera.rotation = lerp(camera.rotation,recenter_head_target,recenter_head_time)
+	
 	
 	## HEAD BOB
 	tick_headbob += delta * velocity.length() * float(is_on_floor())
@@ -191,8 +199,11 @@ func _physics_process(delta):
 		
 		move_and_slide()
 		_snap_down_to_stairs_check()
+	
 	reset_head_from_camera_shake()
 	update_health()
+	update_points_text()
+	update_ammo_count(equipped_gun.cur_mag_ammo, equipped_gun.cur_reserve_ammo)
 	
 	## DEBUG ##
 	if Input.is_action_just_pressed("debug_take_damage"):
@@ -200,56 +211,72 @@ func _physics_process(delta):
 
 
 var raycast_target = null
+var enemy_cast_target = null
 var has_shot_cycled = true
 var is_trigger_pulled = false
 func fire_gun():
-	if has_shot_cycled == true && is_trigger_pulled == false:
-		recenter_head_target = camera.rotation
+	if has_shot_cycled == true && is_trigger_pulled == false && equipped_gun.can_gun_fire:
+		##recenter_head_target = camera.rotation
 		fire_rate.start()
-		if not equipped_gun.anim_player.is_playing():
-			# put functions you want to only happen once per animation loop here
-			equipped_gun.anim_player.play(equipped_gun.fire_anim_name)
-			hit_scan()
-			has_shot_cycled = false
-			is_trigger_pulled = true
-			
-			if equipped_gun.automatic == true:
-				is_trigger_pulled = false
+		# put functions you want to only happen once per animation loop here
+		equipped_gun._trigger_pulled()
+		hit_scan()
+		has_shot_cycled = false
+		is_trigger_pulled = true
+		
+		
+		if recenter_head_time != 0.0:
+			camera_shake_mult += 0.05
+			recenter_head_time -= .05
 		else:
-			reset_head_from_camera_shake()
+			camera_shake_mult = 1.0
+		
+		if equipped_gun.automatic == true:
+			is_trigger_pulled = false
 	else:
-		reset_head_from_camera_shake()
+		pass
 
 
 func reset_head_from_camera_shake():
-	if camera.rotation != recenter_head_target:
+	if (camera.rotation - recenter_head_target != Vector3.ZERO):
 		recenter_head = true
 	else:
 		recenter_head = false
+		camera_shake_mult = 1.0
 		recenter_head_time = 0.0
-	equipped_gun.anim_player.stop()
 
-
+var camera_shake_target = null
 func hit_scan():
-	camera.rotation = lerp(camera.rotation, Vector3(deg_to_rad(randf_range(max_camera_shake, -max_camera_shake)), deg_to_rad(randf_range(max_camera_shake, -max_camera_shake)), 0.0025), deg_to_rad(0.5))
+	var camera_shake_target_x = randf_range(max_camera_shake, 0.0)*camera_shake_mult
+	var camera_shale_target_y = randf_range(max_camera_shake, -max_camera_shake)*camera_shake_mult
+	print(camera_shake_target_x, " ",camera_shale_target_y)
+	camera_shake_target = Vector3(deg_to_rad(camera_shake_target_x), deg_to_rad(camera_shale_target_y), 0.0)
+	camera.rotation = lerp(camera.rotation, camera_shake_target, deg_to_rad(0.4))
 	
 	raycast_target = raycast.get_collider()
-	var enemy = find_enemy_root(raycast_target)
+	enemy_cast_target = enemy_cast.get_collider()
 	
-	if enemy != null:
-		
-		if raycast.get_collider().is_in_group("enemy_head"):
-			enemy.hit(equipped_gun.damage * enemy.head_damage_modifier)
-			add_points(20)
-			bullet_hole(true)
-			print("headshot")
-		elif raycast.get_collider().is_in_group("enemy"):
-			enemy.hit(equipped_gun.damage * enemy.limb_damage_modifier)
-			add_points(10)
-			bullet_hole(true)
-			print("bodyshot")
-	elif raycast_target != null:
-		bullet_hole(false)
+	if raycast_target != null:
+		var enemy = find_enemy_root(enemy_cast_target)
+		if enemy != null:
+			
+			if enemy_cast.get_collider().is_in_group("enemy_head"):
+				enemy.hit(equipped_gun.damage * enemy.head_damage_modifier)
+				add_points(20)
+				bullet_hole(true)
+				print("headshot")
+			#elif enemy_cast.get_collider().is_in_group("enemy"):
+			else:
+				enemy.hit(equipped_gun.damage * enemy.limb_damage_modifier)
+				add_points(10)
+				bullet_hole(true)
+				print("bodyshot")
+		elif raycast_target.is_in_group("navigation_capsule"):
+			pass
+		else:
+			bullet_hole(false)
+	else:
+		pass
 
 func find_enemy_root(node):
 	while node != null:
@@ -261,9 +288,9 @@ func find_enemy_root(node):
 func bullet_hole(is_wound):
 	if is_wound:
 		var b = equipped_gun.bhole_wound_decal.instantiate()
-		var bhole_location = raycast.get_collision_point()
-		var bhole_rotation = raycast.get_collision_normal()
-		raycast.get_collider().add_child(b)
+		var bhole_location = enemy_cast.get_collision_point()
+		var bhole_rotation = enemy_cast.get_collision_normal()
+		enemy_cast.get_collider().add_child(b)
 		b.global_transform.origin = bhole_location
 		b.look_at(bhole_location + bhole_rotation, Vector3.UP)
 		if bhole_rotation == Vector3.UP:
@@ -281,7 +308,6 @@ func bullet_hole(is_wound):
 			b.rotate_object_local(Vector3(1,0,0), deg_to_rad(180))
 		else:
 			pass
-		pass
 
 
 func add_points(added_points: int):
@@ -307,6 +333,7 @@ func update_ammo_count(magazine: int, reserve: int):
 func Switch_Weapon():
 	
 	equipped_gun.visible = false
+	equipped_gun.anim_player.stop()
 	if current_weapon_index == weapons.size()-1:
 		current_weapon_index = 0
 	else:
@@ -376,6 +403,10 @@ func _headbob(time) -> Vector3:
 	pos.y = sin(time * headbob_freq) * headbob_amp
 	pos.x = cos(time * headbob_freq / 2) * headbob_amp
 	return pos
+
+func reload_gun():
+	equipped_gun._mag_reload()
+
 
 
 ## Stairs
