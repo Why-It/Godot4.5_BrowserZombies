@@ -431,6 +431,9 @@ one_shot = true
 wait_time = 2.0
 one_shot = true
 
+[node name="stamina_cooldown" type="Timer" parent="."]
+one_shot = true
+
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
 libraries = {
 &"": SubResource("AnimationLibrary_wq0gl"),
@@ -447,5 +450,6 @@ parameters/conditions/Run = false
 parameters/conditions/Walk = false
 
 [connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
-[connection signal="timeout" from="healing_cooldown" to="." method="_on_healing_cooldown_timeout"]
 [connection signal="timeout" from="healing_cooldown" to="." method="_on_fire_rate_timeout"]
+[connection signal="timeout" from="healing_cooldown" to="." method="_on_healing_cooldown_timeout"]
+[connection signal="timeout" from="stamina_cooldown" to="." method="_on_stamina_cooldown_timeout"]

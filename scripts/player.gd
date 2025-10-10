@@ -13,6 +13,10 @@ var cur_speed = 0.0
 const walking_speed = 4.0
 const sprint_speed = 5.5
 const crouch_speed = 2.75
+var cur_stamina = 100.0
+const max_stamina = 100.0
+var stamina_reduction_rate = 1.0
+var stamina_regeneration_rate = 0.75
 var movement_transition_velocity = 0.0625
 const jump_vel = 4.5
 
@@ -102,6 +106,11 @@ var recenter_head = false
 var recenter_head_speed = 0.5
 var recenter_head_time = 0.0
 func _physics_process(delta):
+	
+	## PLAYER ANIMATION STATE MACHINE
+	##
+	##
+	
 	match state_machine.get_current_node():
 		"Idle":
 			if cur_speed > 0.15:
@@ -150,6 +159,11 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_vel
 	
+	
+	
+	
+	
+	## MOVEMENT SCRIPTING
 	# Get the input direction and handle the movement/deceleration.
 	# As good practice, you should replace UI actions with custom gameplay actions.
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
@@ -160,16 +174,23 @@ func _physics_process(delta):
 			velocity.z = direction.z * cur_speed
 			
 			if Input.is_action_pressed("sprint"):
-				##cur_speed = sprint_speed
-				movement_transition_velocity = 0.75
-				cur_speed = move_toward(cur_speed,sprint_speed,movement_transition_velocity)
+				if !Input.is_action_pressed("crouch"):
+					if cur_stamina > 0:
+						ramp_to_sprinting()
+						cur_stamina -= stamina_reduction_rate
+						stam_regen = false
+					else:
+						ramp_to_walking()
+						stam_regen = false
+						pass
+			elif Input.is_action_just_released("sprint"):
+				stam_regen = false
+				stamina_cooldown.start()
 			elif !Input.is_action_pressed("crouch"):
-				##cur_speed = walking_speed
-				movement_transition_velocity = 0.5
-				cur_speed = move_toward(cur_speed,walking_speed,movement_transition_velocity)
-			elif Input.is_action_pressed("crouch"):
-				movement_transition_velocity = 0.5
-				cur_speed = move_toward(cur_speed,crouch_speed,movement_transition_velocity)
+				ramp_to_walking()
+			
+			if Input.is_action_pressed("crouch"):
+				ramp_to_crouching()
 		else:
 			velocity.x = move_toward(velocity.x, 0, movement_transition_velocity)
 			velocity.z = move_toward(velocity.z, 0, movement_transition_velocity)
@@ -179,6 +200,12 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerp(velocity.x, direction.x * cur_speed, delta * 0.5)
 		velocity.z = lerp(velocity.z, direction.z * cur_speed, delta * 0.5)
+	
+	
+	
+	
+	
+	
 	
 	if recenter_head:
 		
@@ -202,12 +229,31 @@ func _physics_process(delta):
 	
 	reset_head_from_camera_shake()
 	update_health()
+	update_stamina()
 	update_points_text()
 	update_ammo_count(equipped_gun.cur_mag_ammo, equipped_gun.cur_reserve_ammo)
 	
 	## DEBUG ##
 	if Input.is_action_just_pressed("debug_take_damage"):
 		take_damage(15,Vector3.ZERO)
+
+var is_sprinting = false
+func ramp_to_sprinting():
+	movement_transition_velocity = 0.75
+	cur_speed = move_toward(cur_speed,sprint_speed,movement_transition_velocity)
+	is_sprinting = true
+
+var is_crouching = false
+func ramp_to_crouching():
+	movement_transition_velocity = 0.5
+	cur_speed = move_toward(cur_speed,crouch_speed,movement_transition_velocity)
+	is_crouching = true
+
+func ramp_to_walking():
+	movement_transition_velocity = 0.5
+	cur_speed = move_toward(cur_speed,walking_speed,movement_transition_velocity)
+	is_sprinting = false
+	is_crouching = false
 
 
 var raycast_target = null
@@ -249,7 +295,6 @@ var camera_shake_target = null
 func hit_scan():
 	var camera_shake_target_x = randf_range(max_camera_shake, 0.0)*camera_shake_mult
 	var camera_shale_target_y = randf_range(max_camera_shake, -max_camera_shake)*camera_shake_mult
-	print(camera_shake_target_x, " ",camera_shale_target_y)
 	camera_shake_target = Vector3(deg_to_rad(camera_shake_target_x), deg_to_rad(camera_shale_target_y), 0.0)
 	camera.rotation = lerp(camera.rotation, camera_shake_target, deg_to_rad(0.4))
 	
@@ -261,16 +306,16 @@ func hit_scan():
 		if enemy != null:
 			
 			if enemy_cast.get_collider().is_in_group("enemy_head"):
-				enemy.hit(equipped_gun.damage * enemy.head_damage_modifier)
-				add_points(20)
 				bullet_hole(true)
-				print("headshot")
+				if !enemy.has_died:
+					enemy.hit(equipped_gun.damage * enemy.head_damage_modifier)
+					add_points(20)
 			#elif enemy_cast.get_collider().is_in_group("enemy"):
 			else:
-				enemy.hit(equipped_gun.damage * enemy.limb_damage_modifier)
-				add_points(10)
 				bullet_hole(true)
-				print("bodyshot")
+				if !enemy.has_died:
+					enemy.hit(equipped_gun.damage * enemy.limb_damage_modifier)
+					add_points(10)
 		elif raycast_target.is_in_group("navigation_capsule"):
 			pass
 		else:
@@ -398,6 +443,7 @@ func _on_healing_cooldown_timeout() -> void:
 	health_regen = true
 	pass # Replace with function body.
 
+
 func _headbob(time) -> Vector3:
 	var pos = Vector3.ZERO
 	pos.y = sin(time * headbob_freq) * headbob_amp
@@ -449,3 +495,22 @@ func _snap_up_stairs_check(delta) -> bool:
 			_snapped_to_stairs_last_frame = true
 			return true
 	return false
+
+
+## STAMINA
+
+@onready var stamina_cooldown = $stamina_cooldown
+var stam_regen = false
+func update_stamina():
+	if stam_regen:
+		if cur_stamina < max_stamina:
+			cur_stamina += stamina_regeneration_rate
+		elif cur_stamina > max_stamina:
+			cur_stamina = max_stamina
+			stam_regen = false
+	else:
+		pass
+	pass
+
+func _on_stamina_cooldown_timeout() -> void:
+	stam_regen = true
