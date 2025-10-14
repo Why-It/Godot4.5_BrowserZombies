@@ -13,6 +13,7 @@ extends CharacterBody3D
 
 var player = null
 @export var player_path : NodePath
+var barricade_path : NodePath
 
 ##State Machine Shit
 var state_machine

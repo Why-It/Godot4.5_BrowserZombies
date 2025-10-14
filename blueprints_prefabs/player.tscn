@@ -104,7 +104,7 @@ states/Walk/position = Vector2(558, 92)
 transitions = ["Start", "Idle", SubResource("AnimationNodeStateMachineTransition_wq0gl"), "Idle", "Walk", SubResource("AnimationNodeStateMachineTransition_23n3r"), "Walk", "Idle", SubResource("AnimationNodeStateMachineTransition_3noam"), "Walk", "Run", SubResource("AnimationNodeStateMachineTransition_3icfr"), "Run", "Walk", SubResource("AnimationNodeStateMachineTransition_cuhag")]
 graph_offset = Vector2(-90, -53)
 
-[node name="player" type="CharacterBody3D"]
+[node name="player" type="CharacterBody3D" groups=["player"]]
 script = ExtResource("1_sqnym")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="."]
@@ -450,6 +450,6 @@ parameters/conditions/Run = false
 parameters/conditions/Walk = false
 
 [connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
-[connection signal="timeout" from="healing_cooldown" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="healing_cooldown" to="." method="_on_healing_cooldown_timeout"]
+[connection signal="timeout" from="healing_cooldown" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="stamina_cooldown" to="." method="_on_stamina_cooldown_timeout"]

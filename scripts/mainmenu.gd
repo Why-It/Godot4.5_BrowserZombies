@@ -18,7 +18,6 @@ func quit():
 
 
 func _on_map_selector_item_selected(index):
-	print(index)
 	switch_selected_map(index)
 
 func switch_selected_map(index):

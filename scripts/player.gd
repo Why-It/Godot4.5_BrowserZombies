@@ -159,7 +159,11 @@ func _physics_process(delta):
 	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
 		velocity.y = jump_vel
 	
-	
+	if Input.is_action_pressed("interact"):
+		if able_to_interact:
+			if interact_object.is_in_group("barricade"):
+				interact_with_barricade()
+		pass
 	
 	
 	
@@ -514,3 +518,9 @@ func update_stamina():
 
 func _on_stamina_cooldown_timeout() -> void:
 	stam_regen = true
+
+var able_to_interact = false
+var interact_object = null
+func interact_with_barricade():
+	interact_object.rebuild_plank()
+	pass
