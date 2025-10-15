@@ -1,6 +1,6 @@
 [gd_scene load_steps=11 format=3 uid="uid://st8q4ihnfprj"]
 
-[ext_resource type="Script" uid="uid://c533ath0r03kl" path="res://scripts/barrier.gd" id="1_gu4ii"]
+[ext_resource type="Script" uid="uid://c533ath0r03kl" path="res://scripts/barricade.gd" id="1_gu4ii"]
 [ext_resource type="Material" uid="uid://b58tgnvf01kej" path="res://materials/M_ProtoGrid_DarkRed.tres" id="2_m3kfo"]
 [ext_resource type="Material" uid="uid://75fuopaw7nj3" path="res://materials/M_ProtoGrid_Sand.tres" id="3_foshc"]
 
@@ -72,6 +72,203 @@ tracks/5/keys = {
 "handle_modes": PackedInt32Array(0, 0, 0),
 "points": PackedFloat32Array(-0.2617994, -0.25, 0, 0.25, 0, -0.15675375, -0.10000001, -0.020943953, 0.108333334, 0.022689281, 0, -0.20833334, -0.043633234, 0, 0),
 "times": PackedFloat32Array(0, 0.36666667, 0.73333335)
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.033333335, 0.06666667, 0.75),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"values": [{
+"args": [1.0],
+"method": &"set_anim_speed"
+}, {
+"args": [NodePath("Planks/Plank00"), true],
+"method": &"set_plank_collision"
+}, {
+"args": [NodePath("Planks/Plank00"), false],
+"method": &"set_plank_collision"
+}, {
+"args": [0.5],
+"method": &"set_anim_speed"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_waw6b"]
+resource_name = "Plank01_Trigger"
+length = 0.65
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Planks/Plank01:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.0336384, -0.125, -0.0056064, 0, 0),
+"times": PackedFloat32Array(0, 0.6333333)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Planks/Plank01:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(1.5, -0.25, 0, 0.25, 0, 0.00037709175, -0.125, 0.24993716, 0, 0),
+"times": PackedFloat32Array(0, 0.6333333)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Planks/Plank01:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(-0.125, -0.25, 0, 0.25, 0, -0.74999976, -0.125, 0.10416663, 0, 0),
+"times": PackedFloat32Array(0, 0.6333333)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Planks/Plank01:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -1.5483694, -0.125, 0.25806156, 0, 0),
+"times": PackedFloat32Array(0, 0.6333333)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Planks/Plank01:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -1.5707983, -0.125, 0.26179972, 0, 0),
+"times": PackedFloat32Array(0, 0.6333333)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Planks/Plank01:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 0),
+"points": PackedFloat32Array(0.16484635, -0.25, 0, 0.25, 0, 1.5707983, -0.125, -0.23432533, 0, 0),
+"times": PackedFloat32Array(0, 0.6333333)
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.65),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [1.0],
+"method": &"set_anim_speed"
+}, {
+"args": [0.5],
+"method": &"set_anim_speed"
+}]
+}
+
+[sub_resource type="Animation" id="Animation_hpuoi"]
+resource_name = "Plank02_Trigger"
+length = 0.45
+tracks/0/type = "bezier"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("Planks/Plank02:position:x")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.225, 0, 0.225, 0, 2.980232e-08, -0.075, -4.9670534e-09, 0, 0),
+"times": PackedFloat32Array(0, 0.45)
+}
+tracks/1/type = "bezier"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("Planks/Plank02:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(1, -0.225, 0, 0.225, 0, 2.1159747e-07, -0.075, 0.16666664, 0, 0),
+"times": PackedFloat32Array(0, 0.45)
+}
+tracks/2/type = "bezier"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("Planks/Plank02:position:z")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(-0.125, -0.225, 0, 0.225, 0, -0.37500012, -0.075, 0.041666687, 0, 0),
+"times": PackedFloat32Array(0, 0.45)
+}
+tracks/3/type = "bezier"
+tracks/3/imported = false
+tracks/3/enabled = true
+tracks/3/path = NodePath("Planks/Plank02:rotation:x")
+tracks/3/interp = 1
+tracks/3/loop_wrap = true
+tracks/3/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.225, 0, 0.225, 0, -1.5707964, -0.075, 0.26179942, 0, 0),
+"times": PackedFloat32Array(0, 0.45)
+}
+tracks/4/type = "bezier"
+tracks/4/imported = false
+tracks/4/enabled = true
+tracks/4/path = NodePath("Planks/Plank02:rotation:y")
+tracks/4/interp = 1
+tracks/4/loop_wrap = true
+tracks/4/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0, -0.225, 0, 0.225, 0, -1.302701e-15, -0.075, 2.1711685e-16, 0, 0),
+"times": PackedFloat32Array(0, 0.45)
+}
+tracks/5/type = "bezier"
+tracks/5/imported = false
+tracks/5/enabled = true
+tracks/5/path = NodePath("Planks/Plank02:rotation:z")
+tracks/5/interp = 1
+tracks/5/loop_wrap = true
+tracks/5/keys = {
+"handle_modes": PackedInt32Array(0, 2),
+"points": PackedFloat32Array(0.26179942, -0.225, 0, 0.225, 0, 0, -0.075, 0.043633237, 0, 0),
+"times": PackedFloat32Array(0, 0.45)
+}
+tracks/6/type = "method"
+tracks/6/imported = false
+tracks/6/enabled = true
+tracks/6/path = NodePath(".")
+tracks/6/interp = 1
+tracks/6/loop_wrap = true
+tracks/6/keys = {
+"times": PackedFloat32Array(0, 0.45),
+"transitions": PackedFloat32Array(1, 1),
+"values": [{
+"args": [0.5],
+"method": &"set_anim_speed"
+}, {
+"args": [0.5],
+"method": &"set_anim_speed"
+}]
 }
 
 [sub_resource type="Animation" id="Animation_hv331"]
@@ -275,146 +472,6 @@ tracks/17/keys = {
 "times": PackedFloat32Array(0)
 }
 
-[sub_resource type="Animation" id="Animation_waw6b"]
-resource_name = "Plank01_Trigger"
-length = 0.65
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Planks/Plank01:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, 0.0336384, -0.125, -0.0056064, 0, 0),
-"times": PackedFloat32Array(0, 0.6333333)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Planks/Plank01:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(1.5, -0.25, 0, 0.25, 0, 0.00037709175, -0.125, 0.24993716, 0, 0),
-"times": PackedFloat32Array(0, 0.6333333)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Planks/Plank01:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(-0.125, -0.25, 0, 0.25, 0, -0.74999976, -0.125, 0.10416663, 0, 0),
-"times": PackedFloat32Array(0, 0.6333333)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Planks/Plank01:rotation:x")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -1.5483694, -0.125, 0.25806156, 0, 0),
-"times": PackedFloat32Array(0, 0.6333333)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Planks/Plank01:rotation:y")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0, -0.25, 0, 0.25, 0, -1.5707983, -0.125, 0.26179972, 0, 0),
-"times": PackedFloat32Array(0, 0.6333333)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Planks/Plank01:rotation:z")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 0),
-"points": PackedFloat32Array(0.16484635, -0.25, 0, 0.25, 0, 1.5707983, -0.125, -0.23432533, 0, 0),
-"times": PackedFloat32Array(0, 0.6333333)
-}
-
-[sub_resource type="Animation" id="Animation_hpuoi"]
-resource_name = "Plank02_Trigger"
-length = 0.45
-tracks/0/type = "bezier"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("Planks/Plank02:position:x")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(0, -0.225, 0, 0.225, 0, 2.980232e-08, -0.075, -4.9670534e-09, 0, 0),
-"times": PackedFloat32Array(0, 0.45)
-}
-tracks/1/type = "bezier"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("Planks/Plank02:position:y")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(1, -0.225, 0, 0.225, 0, 2.1159747e-07, -0.075, 0.16666664, 0, 0),
-"times": PackedFloat32Array(0, 0.45)
-}
-tracks/2/type = "bezier"
-tracks/2/imported = false
-tracks/2/enabled = true
-tracks/2/path = NodePath("Planks/Plank02:position:z")
-tracks/2/interp = 1
-tracks/2/loop_wrap = true
-tracks/2/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(-0.125, -0.225, 0, 0.225, 0, -0.37500012, -0.075, 0.041666687, 0, 0),
-"times": PackedFloat32Array(0, 0.45)
-}
-tracks/3/type = "bezier"
-tracks/3/imported = false
-tracks/3/enabled = true
-tracks/3/path = NodePath("Planks/Plank02:rotation:x")
-tracks/3/interp = 1
-tracks/3/loop_wrap = true
-tracks/3/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(0, -0.225, 0, 0.225, 0, -1.5707964, -0.075, 0.26179942, 0, 0),
-"times": PackedFloat32Array(0, 0.45)
-}
-tracks/4/type = "bezier"
-tracks/4/imported = false
-tracks/4/enabled = true
-tracks/4/path = NodePath("Planks/Plank02:rotation:y")
-tracks/4/interp = 1
-tracks/4/loop_wrap = true
-tracks/4/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(0, -0.225, 0, 0.225, 0, -1.302701e-15, -0.075, 2.1711685e-16, 0, 0),
-"times": PackedFloat32Array(0, 0.45)
-}
-tracks/5/type = "bezier"
-tracks/5/imported = false
-tracks/5/enabled = true
-tracks/5/path = NodePath("Planks/Plank02:rotation:z")
-tracks/5/interp = 1
-tracks/5/loop_wrap = true
-tracks/5/keys = {
-"handle_modes": PackedInt32Array(0, 2),
-"points": PackedFloat32Array(0.26179942, -0.225, 0, 0.225, 0, 0, -0.075, 0.043633237, 0, 0),
-"times": PackedFloat32Array(0, 0.45)
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_f3wr1"]
 _data = {
 &"Plank00_Trigger": SubResource("Animation_q3bt0"),
@@ -427,7 +484,7 @@ _data = {
 size = Vector3(1.5, 1.5, 1.25)
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_m3kfo"]
-size = Vector3(1, 1.375, 0.625)
+size = Vector3(1.5, 1.875, 1.125)
 
 [node name="Barricade" type="Node3D" groups=["barricade"]]
 script = ExtResource("1_gu4ii")
@@ -462,18 +519,21 @@ material = ExtResource("2_m3kfo")
 [node name="Planks" type="Node3D" parent="."]
 
 [node name="Plank00" type="CSGBox3D" parent="Planks"]
-transform = Transform3D(0.9659255, 0.25881898, 0, -0.25881895, 0.9659256, 0, 0, 0, 0.99999994, 1.8626451e-09, 1.25, -0.18671876)
-size = Vector3(1.125, 0.188, 0.063)
+transform = Transform3D(0.9659255, 0.25881895, 0, -0.25881895, 0.9659255, 0, 0, 0, 0.99999994, 1.8626451e-09, 1.25, -0.18671876)
+use_collision = true
+size = Vector3(1.4, 0.188, 0.063)
 material = ExtResource("3_foshc")
 
 [node name="Plank01" type="CSGBox3D" parent="Planks"]
 transform = Transform3D(0.9864434, -0.16410074, 0, 0.16410074, 0.9864434, 0, 0, 0, 1, 0, 1.5, -0.125)
-size = Vector3(1.125, 0.188, 0.063)
+use_collision = true
+size = Vector3(1.4, 0.188, 0.063)
 material = ExtResource("3_foshc")
 
 [node name="Plank02" type="CSGBox3D" parent="Planks"]
-transform = Transform3D(0.96592563, -0.258819, 0, 0.258819, 0.96592563, 0, 0, 0, 1, 0, 1, -0.125)
-size = Vector3(1.125, 0.188, 0.063)
+transform = Transform3D(0.9659255, -0.25881898, 0, 0.25881898, 0.9659255, 0, 0, 0, 1, 0, 1, -0.125)
+use_collision = true
+size = Vector3(1.4, 0.188, 0.063)
 material = ExtResource("3_foshc")
 
 [node name="AnimationPlayer" type="AnimationPlayer" parent="."]
@@ -496,11 +556,15 @@ collision_layer = 7
 collision_mask = 7
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="ZombieInteractionRange"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.125, -0.25)
 shape = SubResource("BoxShape3D_m3kfo")
 
 [node name="NavigationLink3D" type="NavigationLink3D" parent="."]
-start_position = Vector3(0, 0, -3)
-end_position = Vector3(0, 0, 3)
+start_position = Vector3(0, 0, -1.25)
+end_position = Vector3(0, 0, 1.25)
+
+[node name="ZombieTeleportTarget" type="Node3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.125, 0.625)
 
 [connection signal="body_entered" from="InteractionRange" to="." method="_on_interaction_range_body_entered"]
 [connection signal="body_exited" from="InteractionRange" to="." method="_on_interaction_range_body_exited"]

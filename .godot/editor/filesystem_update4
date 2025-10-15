@@ -1,11 +1,8 @@
-res://scenes_levels/oct_14_2025.tscn
+res://blueprints_prefabs/barricade.tscn
+res://scripts/barrier.gd
 res://blueprints_prefabs/zombie.tscn
 res://scripts/enemy.gd
-res://scenes_levels/game_manager.gd
-res://blueprints_prefabs/barrier.tscn
-res://scripts/barrier.gd
-res://blueprints_prefabs/player.tscn
-res://scripts/player.gd
-res://blueprints_prefabs/barricade.tscn
-res://scenes_levels/mainmenu.tscn
-res://scripts/mainmenu.gd
+res://scenes_levels/oct_14_2025.tscn
+res://scripts/barricade.gd
+res://animations/Zombie.res
+res://blueprints_prefabs/standard_building.tscn

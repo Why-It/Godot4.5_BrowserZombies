@@ -11,8 +11,9 @@ extends CharacterBody3D
 ## 
 
 
-var player = null
-@export var player_path : NodePath
+var target = null
+@export var target_path : NodePath
+var player_ref = null
 var barricade_path : NodePath
 
 ##State Machine Shit
@@ -33,10 +34,10 @@ var attack_distance = 1.5
 @onready var collision_shape = $CollisionShape3D
 
 func _ready():
-	player = get_node(player_path)
+	target = get_node(target_path)
+	player_ref = get_node(target_path)
 	state_machine = anime_tree.get("parameters/playback")
 	anime_tree.set("active", true)
-	pass
 
 func _process(_delta):
 	
@@ -51,7 +52,7 @@ func _physics_process(delta: float) -> void:
 		"Walk":
 			velocity = Vector3.ZERO
 			
-			nav_agent.set_target_position(player.global_position)
+			nav_agent.set_target_position(target.global_position)
 			var next_nav_point = nav_agent.get_next_path_position()
 			velocity = (next_nav_point - global_position).normalized() * move_speed
 			look_at(Vector3(next_nav_point.x, global_position.y, next_nav_point.z), Vector3.UP)
@@ -59,20 +60,17 @@ func _physics_process(delta: float) -> void:
 			
 			move_and_slide()
 		"Attack":
-			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+			look_at(Vector3(target.global_position.x, global_position.y, target.global_position.z), Vector3.UP)
 			anime_tree.set("parameters/conditions/Walk", !target_in_range())
-			pass
 		"Hit":
-			look_at(Vector3(player.global_position.x, global_position.y, player.global_position.z), Vector3.UP)
+			look_at(Vector3(target.global_position.x, global_position.y, target.global_position.z), Vector3.UP)
 			anime_tree.set("parameters/conditions/Hit", false)
 			if previous_state == "Attack" or "Walk":
 				anime_tree.set("parameters/conditions/Walk", true)
 			elif previous_state == "Idle":
 				anime_tree.set("parameters/conditions/Idle", true)
-			pass
 		"Death":
 			anime_tree.set("parameters/conditions/Death", false)
-			pass
 		"Spawning":
 			pass
 	
@@ -80,7 +78,7 @@ func _physics_process(delta: float) -> void:
 		global_position = lerp(global_position,Vector3(global_position.x,global_position.y - 1,global_position.z),0.0025)
 
 func target_in_range():
-	return global_position.distance_to(player.global_position) < attack_distance
+	return global_position.distance_to(target.global_position) < attack_distance
 
 func hit(damage):
 	health -= damage
@@ -88,17 +86,20 @@ func hit(damage):
 		anime_tree.set("parameters/conditions/Death", true)
 		has_died = true
 	else:
-		print("hit")
 		previous_state = state_machine.get_current_node()
 		anime_tree.set("parameters/conditions/Hit", true)
-	pass
 
-func hit_player():
+func hit_target():
 	if target_in_range():
-		var dir = global_position.direction_to(player.global_position)
-		player.take_damage(attack_damage, dir)
-		pass
-	pass
+		var dir = global_position.direction_to(target.global_position)
+		if target.is_in_group("player"):
+			target.take_damage(attack_damage, dir)
+		elif target.is_in_group("barricade"):
+			if target.is_plank00_down && target.is_plank01_down && target.is_plank02_down:
+				self.global_position = target.zombie_tele_target.global_position
+				target = player_ref
+			else:
+				target.remove_plank()
 
 @onready var despawn_delay_timer = $DespawnDelay
 @onready var sink_delay_timer = $SinkDelay
@@ -108,16 +109,18 @@ func death():
 		despawn_delay_timer.start()
 		sink_delay_timer.start()
 		has_died = false
-	pass
 
 
 func _on_despawn_delay_timeout() -> void:
 	print("despawning")
 	queue_free()
-	pass # Replace with function body.
 
 var is_sinking = false
 func _on_sink_delay_timeout() -> void:
 	print("Sinking")
 	is_sinking = true
-	pass # Replace with function body.
+
+var is_barricade_targeted = false
+func target_barricade(barricade: Node):
+	target = barricade
+	is_barricade_targeted = true
