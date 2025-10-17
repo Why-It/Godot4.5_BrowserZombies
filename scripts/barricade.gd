@@ -8,7 +8,7 @@ var is_plank02_down = false
 var is_player_within_range = false
 var is_zombie_within_range = false
 @onready var zombie_tele_target = $ZombieTeleportTarget
-@export var player = Node
+var player = null
 
 func _ready() -> void:
 	
@@ -47,6 +47,7 @@ func _on_interaction_range_body_entered(body: Node3D) -> void:
 		is_player_within_range = true
 		body.able_to_interact = true
 		body.interact_object = $"."
+		player = body
 
 
 func _on_interaction_range_body_exited(body: Node3D) -> void:
@@ -54,6 +55,7 @@ func _on_interaction_range_body_exited(body: Node3D) -> void:
 		is_player_within_range = false
 		body.able_to_interact = false
 		body.interact_object = null
+		player = null
 
 
 var enemy = null

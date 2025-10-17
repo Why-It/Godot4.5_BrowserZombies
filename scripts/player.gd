@@ -2,7 +2,6 @@ extends CharacterBody3D
 
 ##NOTES
 ## Need to add logic to buying doors
-## Need to add logic to repairing barricade
 ## Need to add melee attack
 ## Perks
 ## Need to add buying guns

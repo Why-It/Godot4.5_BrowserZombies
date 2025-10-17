@@ -1,18 +1,14 @@
 extends CharacterBody3D
 
 ## NOTES
-## Need to remove collision so the player doesn't run into the corpse
-## Need to change collider layers s othe player isn't shooting the zombie's navigation capsule, but only the skeleton colliders
 ## Need to add states and logic to make the zombie
-## - spawn
-## - go to closest barricade
-## - tear barricade down
-## - then target player
+## - spawn ~~
+## - go to closest barricade ~~
 ## 
 
 
 var target = null
-@export var target_path : NodePath
+var target_path = "/root/player"
 var player_ref = null
 var barricade_path : NodePath
 
@@ -34,8 +30,8 @@ var attack_distance = 1.5
 @onready var collision_shape = $CollisionShape3D
 
 func _ready():
-	target = get_node(target_path)
-	player_ref = get_node(target_path)
+	target = get_tree().get_first_node_in_group("player")
+	player_ref = get_tree().get_first_node_in_group("player")
 	state_machine = anime_tree.get("parameters/playback")
 	anime_tree.set("active", true)
 
@@ -48,7 +44,10 @@ var previous_state = null
 func _physics_process(delta: float) -> void:
 	match state_machine.get_current_node():
 		"Idle":
-			anime_tree.set("parameters/conditions/Walk", true)
+			if target != null:
+				anime_tree.set("parameters/conditions/Walk", true)
+			else:
+				pass
 		"Walk":
 			velocity = Vector3.ZERO
 			
