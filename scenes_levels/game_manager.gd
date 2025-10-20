@@ -2,7 +2,9 @@ extends Node3D
 
 @export var player = Node3D
 
-@export var barricades = []
+var zones = []
+@export var zones_location_in_tree : Node3D
+var cur_zone = null
 
 @export var spawners_location_in_tree : Node3D
 var zombie_spawners = []
@@ -15,6 +17,8 @@ var cur_round : int
 var cur_difficulty : float
 
 func _ready() -> void:
+	zones = zones_location_in_tree.get_children()
+	print(zones)
 	zombie_spawners = spawners_location_in_tree.get_children()
 
 func zombie_check():
@@ -34,8 +38,21 @@ func change_difficulty():
 	pass
 
 func spawn_zombie():
-	closest_spawner_to_player()
-	closest_spawner.spawn_zombie()
+	#closest_spawner_to_player()
+	#closest_spawner.spawn_zombie()
+	choose_spawner()
+
+func player_current_zone():
+	for z in range(0, zones.size()):
+		zones[z].check_for_player()
+		if zones[z].is_player_in_zone:
+			cur_zone = zones[z]
+	print(cur_zone)
+
+func choose_spawner():
+	player_current_zone()
+	var selected_spawn = randi_range(0, cur_zone.spawns.size() - 1)
+	cur_zone.spawns[selected_spawn].spawn_zombie()
 
 var closest_spawner = null
 func closest_spawner_to_player():

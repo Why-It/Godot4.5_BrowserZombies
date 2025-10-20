@@ -134,3 +134,10 @@ surface_material_override/0 = ExtResource("4_s0bxr")
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="Window3/StaticBody3D"]
 shape = SubResource("ConvexPolygonShape3D_j6al5")
+
+[node name="NavigationObstacle3D" type="NavigationObstacle3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.5, 0)
+visible = false
+height = 10.4
+vertices = PackedVector3Array(-5.025036, 0, 2.511517, -5.0119996, 0, -2.481477, 5.0391703, 0, -2.4945138, 5.0391703, 0, 2.53759)
+affect_navigation_mesh = true

@@ -1,0 +1,15 @@
+[gd_scene load_steps=3 format=3 uid="uid://dwv1ubwydck5x"]
+
+[ext_resource type="Script" uid="uid://bbpeeb1x28vln" path="res://scripts/zone.gd" id="1_jskwl"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_q315i"]
+size = Vector3(46.375, 10.625, 31.875)
+
+[node name="Spawn" type="Area3D"]
+script = ExtResource("1_jskwl")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_q315i")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
+[connection signal="body_exited" from="." to="." method="_on_body_exited"]
