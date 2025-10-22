@@ -1,6 +1,3 @@
-res://blueprints_prefabs/wide_building.tscn
 res://scenes_levels/oct_14_2025.tscn
-res://blueprints_prefabs/standard_building.tscn
 res://scenes_levels/game_manager.gd
-res://blueprints_prefabs/zone.tscn
-res://scripts/zone.gd
+res://blueprints_prefabs/player.tscn

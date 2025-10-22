@@ -1,3 +1,6 @@
+TextureRect
+Sprite2D
+Label
 CollisionShape3D
 Area3D
 Node3D
@@ -9,6 +12,3 @@ NavigationLink3D
 AnimationPlayer
 StaticBody3D
 CSGMesh3D
-CSGPolygon3D
-WorldEnvironment
-DirectionalLight3D

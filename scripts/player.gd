@@ -35,18 +35,18 @@ var gun_raycast = null
 @export var equipped_gun = null
 @export var current_weapon_index = 0
 @export var weapons = []
-@onready var weapon_icon_slot = $player_hud/BoxContainer3/BoxContainer3/BoxContainer2/BoxContainer2/weapon_/TextureRect
+@onready var weapon_icon_slot = $player_hud/Bottom/BottomRight/BoxContainer/BoxContainer2/weapon_/TextureRect
 
 var max_camera_shake = 150
 var min_camera_shake = 100
 var camera_shake_mult = 1.0
 @onready var fire_rate = $fire_rate
 
-@onready var magazine_text = $player_hud/BoxContainer3/BoxContainer3/BoxContainer2/BoxContainer2/magazine
-@onready var ammo_reserve_text = $player_hud/BoxContainer3/BoxContainer3/BoxContainer2/BoxContainer2/reserve
+@onready var magazine_text = $player_hud/Bottom/BottomRight/BoxContainer/BoxContainer2/magazine
+@onready var ammo_reserve_text = $player_hud/Bottom/BottomRight/BoxContainer/BoxContainer2/reserve
 
 
-@onready var points_text = $player_hud/BoxContainer3/BoxContainer/BoxContainer3/points
+@onready var points_text = $player_hud/Bottom/BottomRight/SpacerUpper/TextureRect/points
 var points = 0
 
 
@@ -56,6 +56,9 @@ var state_machine
 
 @onready var blood_eyes = $Blood
 var blood_opacity = 0.0
+
+@onready var round_container = $player_hud/Bottom/BottomLeft/BoxContainer3/RoundContainer
+@onready var round_text = $player_hud/Bottom/BottomLeft/BoxContainer3/RoundContainer/Label
 
 ## HEAD BOB
 var headbob_freq = 2.0
@@ -91,15 +94,14 @@ func _input(event):
 	if event.is_action_pressed("next_gun"):
 		Switch_Weapon()
 	
-	if event.is_action_pressed("DebugGiveWeapons"):
-		Update_Weapon_Array("GiveAllWeapons")
-	
 	if event.is_action_pressed("shoot"):
 		##recenter_head_target = camera.rotation
 		pass
 	if event.is_action_released("shoot"):
 		is_trigger_pulled = false
-
+	
+	if event.is_action_pressed("DebugGiveWeapons"):
+		Update_Weapon_Array("GiveAllWeapons")
 
 var recenter_head = false
 var recenter_head_speed = 0.5
@@ -235,10 +237,6 @@ func _physics_process(delta):
 	update_stamina()
 	update_points_text()
 	update_ammo_count(equipped_gun.cur_mag_ammo, equipped_gun.cur_reserve_ammo)
-	
-	## DEBUG ##
-	if Input.is_action_just_pressed("debug_take_damage"):
-		take_damage(15,Vector3.ZERO)
 
 var is_sprinting = false
 func ramp_to_sprinting():
@@ -395,7 +393,6 @@ func Switch_Weapon():
 	
 	pass
 
-
 func Update_Weapon_Array(command):
 	if command == "GiveAllWeapons":
 		weapons.clear()
@@ -403,11 +400,12 @@ func Update_Weapon_Array(command):
 		print("Giving all weapons")
 	pass
 
-
 func _on_fire_rate_timeout() -> void:
 	has_shot_cycled = true
 	pass # Replace with function body.
 
+func reload_gun():
+	equipped_gun._mag_reload()
 
 var pushback = 3.0
 func take_damage(damage, dir):
@@ -453,8 +451,6 @@ func _headbob(time) -> Vector3:
 	pos.x = cos(time * headbob_freq / 2) * headbob_amp
 	return pos
 
-func reload_gun():
-	equipped_gun._mag_reload()
 
 
 

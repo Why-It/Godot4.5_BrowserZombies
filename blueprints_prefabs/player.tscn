@@ -1,4 +1,4 @@
-[gd_scene load_steps=23 format=3 uid="uid://b82o5rl68h75n"]
+[gd_scene load_steps=26 format=3 uid="uid://b82o5rl68h75n"]
 
 [ext_resource type="Script" uid="uid://cd2llem3ltlka" path="res://scripts/player.gd" id="1_sqnym"]
 [ext_resource type="PackedScene" uid="uid://cdxptr0ahbrr0" path="res://blueprints_prefabs/pause_menu.tscn" id="2_ruo0x"]
@@ -7,6 +7,8 @@
 [ext_resource type="Texture2D" uid="uid://d2qlamd3kxdkb" path="res://textures/icon.svg" id="4_823lu"]
 [ext_resource type="PackedScene" uid="uid://5nclj8qnidtt" path="res://blueprints_prefabs/handgun.tscn" id="4_m2qbv"]
 [ext_resource type="Texture2D" uid="uid://0ekvphpapcvl" path="res://textures/blood_splatter256.png" id="5_23n3r"]
+[ext_resource type="FontFile" uid="uid://dnwv0l1far158" path="res://fonts/edosz.ttf" id="6_3icfr"]
+[ext_resource type="Texture2D" uid="uid://m5ndclivtbg0" path="res://textures/T_Streak.png" id="6_3noam"]
 [ext_resource type="AnimationLibrary" uid="uid://prad115pbayh" path="res://animations/Player.res" id="7_wq0gl"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f6354"]
@@ -20,6 +22,12 @@ rings = 2
 [sub_resource type="CapsuleMesh" id="CapsuleMesh_tpqxe"]
 radius = 0.05
 height = 0.5
+
+[sub_resource type="LabelSettings" id="LabelSettings_cuhag"]
+font_size = 80
+font_color = Color(0.87038714, 1.4439225e-06, 1.2513996e-06, 1)
+outline_size = 1
+outline_color = Color(0, 0, 0, 1)
 
 [sub_resource type="Animation" id="Animation_m2qbv"]
 length = 0.001
@@ -305,119 +313,176 @@ layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
 
-[node name="BoxContainer3" type="BoxContainer" parent="player_hud"]
+[node name="Bottom" type="BoxContainer" parent="player_hud"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_vertical = 3
-size_flags_stretch_ratio = 0.5
+size_flags_stretch_ratio = 0.75
 
-[node name="BoxContainer" type="BoxContainer" parent="player_hud/BoxContainer3"]
+[node name="BottomLeft" type="BoxContainer" parent="player_hud/Bottom"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 vertical = true
 
-[node name="BoxContainer2" type="BoxContainer" parent="player_hud/BoxContainer3/BoxContainer"]
+[node name="BoxContainer2" type="BoxContainer" parent="player_hud/Bottom/BottomLeft"]
 layout_mode = 2
 size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
 
-[node name="BoxContainer3" type="BoxContainer" parent="player_hud/BoxContainer3/BoxContainer"]
+[node name="BoxContainer3" type="BoxContainer" parent="player_hud/Bottom/BottomLeft"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 
-[node name="BoxContainer2" type="BoxContainer" parent="player_hud/BoxContainer3/BoxContainer/BoxContainer3"]
+[node name="BoxContainer2" type="BoxContainer" parent="player_hud/Bottom/BottomLeft/BoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.15
 
-[node name="BoxContainer" type="BoxContainer" parent="player_hud/BoxContainer3/BoxContainer/BoxContainer3"]
+[node name="RoundContainer" type="BoxContainer" parent="player_hud/Bottom/BottomLeft/BoxContainer3"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.3
+
+[node name="Label" type="Label" parent="player_hud/Bottom/BottomLeft/BoxContainer3/RoundContainer"]
+layout_mode = 2
+theme_override_fonts/font = ExtResource("6_3icfr")
+text = "999"
+label_settings = SubResource("LabelSettings_cuhag")
+horizontal_alignment = 1
+vertical_alignment = 1
+uppercase = true
+
+[node name="1" type="TextureRect" parent="player_hud/Bottom/BottomLeft/BoxContainer3/RoundContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="2" type="TextureRect" parent="player_hud/Bottom/BottomLeft/BoxContainer3/RoundContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="3" type="TextureRect" parent="player_hud/Bottom/BottomLeft/BoxContainer3/RoundContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="4" type="TextureRect" parent="player_hud/Bottom/BottomLeft/BoxContainer3/RoundContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="5" type="TextureRect" parent="player_hud/Bottom/BottomLeft/BoxContainer3/RoundContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="6" type="TextureRect" parent="player_hud/Bottom/BottomLeft/BoxContainer3/RoundContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="7" type="TextureRect" parent="player_hud/Bottom/BottomLeft/BoxContainer3/RoundContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="8" type="TextureRect" parent="player_hud/Bottom/BottomLeft/BoxContainer3/RoundContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="9" type="TextureRect" parent="player_hud/Bottom/BottomLeft/BoxContainer3/RoundContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="10" type="TextureRect" parent="player_hud/Bottom/BottomLeft/BoxContainer3/RoundContainer"]
+layout_mode = 2
+size_flags_horizontal = 0
+
+[node name="BoxContainer3" type="BoxContainer" parent="player_hud/Bottom/BottomLeft/BoxContainer3"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 0.3
+
+[node name="BoxContainer" type="BoxContainer" parent="player_hud/Bottom/BottomLeft"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="BottomCenter" type="BoxContainer" parent="player_hud/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+
+[node name="BottomRight" type="BoxContainer" parent="player_hud/Bottom"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+vertical = true
+
+[node name="SpacerUpper" type="BoxContainer" parent="player_hud/Bottom/BottomRight"]
+layout_direction = 1
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 1.5
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="player_hud/BoxContainer3/BoxContainer/BoxContainer3/BoxContainer"]
+[node name="TextureRect" type="TextureRect" parent="player_hud/Bottom/BottomRight/SpacerUpper"]
 layout_mode = 2
-texture = ExtResource("4_823lu")
-expand_mode = 3
+size_flags_horizontal = 3
+texture = ExtResource("6_3noam")
+expand_mode = 2
 
-[node name="points" type="Label" parent="player_hud/BoxContainer3/BoxContainer/BoxContainer3"]
-layout_mode = 2
+[node name="points" type="Label" parent="player_hud/Bottom/BottomRight/SpacerUpper/TextureRect"]
+layout_mode = 1
+anchors_preset = -1
+anchor_right = 1.0
+anchor_bottom = 1.0
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.2
 text = "999999"
 horizontal_alignment = 1
 vertical_alignment = 1
+uppercase = true
 
-[node name="BoxContainer3" type="BoxContainer" parent="player_hud/BoxContainer3/BoxContainer/BoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-size_flags_stretch_ratio = 0.3
-
-[node name="BoxContainer" type="BoxContainer" parent="player_hud/BoxContainer3/BoxContainer"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="BoxContainer2" type="BoxContainer" parent="player_hud/BoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-
-[node name="BoxContainer3" type="BoxContainer" parent="player_hud/BoxContainer3"]
-layout_mode = 2
-size_flags_horizontal = 3
-alignment = 1
-vertical = true
-
-[node name="BoxContainer" type="BoxContainer" parent="player_hud/BoxContainer3/BoxContainer3"]
-layout_mode = 2
-size_flags_vertical = 3
-
-[node name="BoxContainer2" type="BoxContainer" parent="player_hud/BoxContainer3/BoxContainer3"]
+[node name="BoxContainer" type="BoxContainer" parent="player_hud/Bottom/BottomRight"]
 layout_mode = 2
 size_flags_vertical = 3
 size_flags_stretch_ratio = 4.0
 
-[node name="BoxContainer" type="BoxContainer" parent="player_hud/BoxContainer3/BoxContainer3/BoxContainer2"]
+[node name="SpacerLeft" type="BoxContainer" parent="player_hud/Bottom/BottomRight/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BoxContainer2" type="BoxContainer" parent="player_hud/BoxContainer3/BoxContainer3/BoxContainer2"]
+[node name="BoxContainer2" type="BoxContainer" parent="player_hud/Bottom/BottomRight/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 5.0
 
-[node name="weapon_" type="BoxContainer" parent="player_hud/BoxContainer3/BoxContainer3/BoxContainer2/BoxContainer2"]
+[node name="weapon_" type="BoxContainer" parent="player_hud/Bottom/BottomRight/BoxContainer/BoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 alignment = 1
 
-[node name="TextureRect" type="TextureRect" parent="player_hud/BoxContainer3/BoxContainer3/BoxContainer2/BoxContainer2/weapon_"]
+[node name="TextureRect" type="TextureRect" parent="player_hud/Bottom/BottomRight/BoxContainer/BoxContainer2/weapon_"]
 layout_mode = 2
 texture = ExtResource("4_823lu")
 expand_mode = 3
 
-[node name="magazine" type="Label" parent="player_hud/BoxContainer3/BoxContainer3/BoxContainer2/BoxContainer2"]
+[node name="magazine" type="Label" parent="player_hud/Bottom/BottomRight/BoxContainer/BoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "99"
 horizontal_alignment = 2
 
-[node name="VSeparator" type="VSeparator" parent="player_hud/BoxContainer3/BoxContainer3/BoxContainer2/BoxContainer2"]
+[node name="VSeparator" type="VSeparator" parent="player_hud/Bottom/BottomRight/BoxContainer/BoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 size_flags_stretch_ratio = 0.15
 
-[node name="reserve" type="Label" parent="player_hud/BoxContainer3/BoxContainer3/BoxContainer2/BoxContainer2"]
+[node name="reserve" type="Label" parent="player_hud/Bottom/BottomRight/BoxContainer/BoxContainer2"]
 layout_mode = 2
 size_flags_horizontal = 3
 text = "999"
 
-[node name="BoxContainer3" type="BoxContainer" parent="player_hud/BoxContainer3/BoxContainer3/BoxContainer2"]
+[node name="SpacerRight" type="BoxContainer" parent="player_hud/Bottom/BottomRight/BoxContainer"]
 layout_mode = 2
 size_flags_horizontal = 3
 
-[node name="BoxContainer3" type="BoxContainer" parent="player_hud/BoxContainer3/BoxContainer3"]
+[node name="SpacerLower" type="BoxContainer" parent="player_hud/Bottom/BottomRight"]
 layout_mode = 2
 size_flags_vertical = 3
 
@@ -450,6 +515,6 @@ parameters/conditions/Run = false
 parameters/conditions/Walk = false
 
 [connection signal="timeout" from="fire_rate" to="." method="_on_fire_rate_timeout"]
-[connection signal="timeout" from="healing_cooldown" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="healing_cooldown" to="." method="_on_healing_cooldown_timeout"]
+[connection signal="timeout" from="healing_cooldown" to="." method="_on_fire_rate_timeout"]
 [connection signal="timeout" from="stamina_cooldown" to="." method="_on_stamina_cooldown_timeout"]
