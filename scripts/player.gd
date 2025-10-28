@@ -48,6 +48,10 @@ var camera_shake_mult = 1.0
 
 @onready var points_text = $player_hud/Bottom/BottomRight/SpacerUpper/TextureRect/points
 var points = 0
+var total_points = 0
+var spent_points = 0
+var round_count = 0
+@onready var death_screen = $PlayerDeathMenu
 
 
 @onready var anim_player = $AnimationPlayer
@@ -82,26 +86,30 @@ func _ready():
 	update_ammo_count(equipped_gun.cur_mag_ammo,equipped_gun.cur_reserve_ammo)
 	state_machine = anim_tree.get("parameters/playback")
 	anim_tree.set("active", true)
+	add_points(0)
+	kill_track(false)
 
+var can_move = true
 
 func _input(event):
-	if event is InputEventMouseMotion:
-		rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
-		head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
+	if can_move:
+		if event is InputEventMouseMotion:
+			rotate_y(deg_to_rad(-event.relative.x * mouse_sens))
+			head.rotate_x(deg_to_rad(-event.relative.y * mouse_sens))
+			
+			head.rotation.x = clamp(head.rotation.x, deg_to_rad(-80), deg_to_rad(80))
 		
-		head.rotation.x = clamp(head.rotation.x, deg_to_rad(-80), deg_to_rad(80))
-	
-	if event.is_action_pressed("next_gun"):
-		Switch_Weapon()
-	
-	if event.is_action_pressed("shoot"):
-		##recenter_head_target = camera.rotation
-		pass
-	if event.is_action_released("shoot"):
-		is_trigger_pulled = false
-	
-	if event.is_action_pressed("DebugGiveWeapons"):
-		Update_Weapon_Array("GiveAllWeapons")
+		if event.is_action_pressed("next_gun"):
+			Switch_Weapon()
+		
+		if event.is_action_pressed("shoot"):
+			##recenter_head_target = camera.rotation
+			pass
+		if event.is_action_released("shoot"):
+			is_trigger_pulled = false
+		
+		if event.is_action_pressed("DebugGiveWeapons"):
+			Update_Weapon_Array("GiveAllWeapons")
 
 var recenter_head = false
 var recenter_head_speed = 0.5
@@ -143,28 +151,25 @@ func _physics_process(delta):
 			pass
 		pass
 	
-	if Input.is_action_pressed("shoot"):
-		fire_gun()
-	
-	if Input.is_action_pressed("pause"):
-		pause_menu._pause()
-	
-	if Input.is_action_pressed("reload"):
-		reload_gun()
-	
-	# Add the gravity.
-	if not is_on_floor():
-		velocity.y -= gravity * delta
-	
-	# Handle jump.
-	if Input.is_action_just_pressed("ui_accept") and is_on_floor():
-		velocity.y = jump_vel
-	
-	if Input.is_action_pressed("interact"):
-		if able_to_interact:
-			if interact_object.is_in_group("barricade"):
-				interact_with_barricade()
-		pass
+	if can_move:
+		if Input.is_action_pressed("shoot"):
+			fire_gun()
+		
+		if Input.is_action_pressed("pause"):
+			pause_menu._pause()
+		
+		if Input.is_action_pressed("reload"):
+			reload_gun()
+		
+		# Handle jump.
+		if Input.is_action_just_pressed("ui_accept") and is_on_floor():
+			velocity.y = jump_vel
+		
+		if Input.is_action_pressed("interact"):
+			if able_to_interact:
+				if interact_object.is_in_group("barricade"):
+					interact_with_barricade()
+			pass
 	
 	
 	
@@ -174,7 +179,7 @@ func _physics_process(delta):
 	var input_dir = Input.get_vector("left", "right", "forward", "backward")
 	var direction = (transform.basis * Vector3(input_dir.x, 0, input_dir.y)).normalized()
 	if is_on_floor() or _snapped_to_stairs_last_frame:
-		if direction:
+		if direction && can_move:
 			velocity.x = direction.x * cur_speed
 			velocity.z = direction.z * cur_speed
 			
@@ -205,8 +210,12 @@ func _physics_process(delta):
 	else:
 		velocity.x = lerp(velocity.x, direction.x * cur_speed, delta * 0.5)
 		velocity.z = lerp(velocity.z, direction.z * cur_speed, delta * 0.5)
+		
 	
 	
+	# Add the gravity.
+	if not is_on_floor():
+		velocity.y -= gravity * delta
 	
 	
 	
@@ -311,12 +320,23 @@ func hit_scan():
 				if !enemy.has_died:
 					enemy.hit(equipped_gun.damage * enemy.head_damage_modifier)
 					add_points(20)
-			#elif enemy_cast.get_collider().is_in_group("enemy"):
+					
+					##check if enemy was killed
+					await get_tree().process_frame
+					if enemy.has_died && !enemy.has_been_tracked:
+						kill_track(true)
+						enemy.has_been_tracked = true
 			else:
 				bullet_hole(true)
 				if !enemy.has_died:
 					enemy.hit(equipped_gun.damage * enemy.limb_damage_modifier)
 					add_points(10)
+					
+					##check if enemy was killed
+					await get_tree().process_frame
+					if enemy.has_died && !enemy.has_been_tracked:
+						kill_track(false)
+						enemy.has_been_tracked = true
 		elif raycast_target.is_in_group("navigation_capsule"):
 			pass
 		else:
@@ -359,16 +379,29 @@ func bullet_hole(is_wound):
 func add_points(added_points: int):
 	if not points >= 99999:
 		points += added_points
+		total_points += added_points
 		update_points_text()
 
+var total_kills = -1
+var headshot_kills = 0
+func kill_track(headshot: bool):
+	total_kills += 1
+	if headshot:
+		headshot_kills += 1
+	
+	death_screen.kill_counter.set("text", total_kills)
+	death_screen.headshot_counter.set("text", headshot_kills)
+	
+	print("adding kill")
 
 func remove_points(reduction_amount: int):
 	points -= reduction_amount
+	spent_points += reduction_amount
 	update_points_text()
-
 
 func update_points_text():
 	points_text.set("text", points)
+	death_screen.points_counter.set("text", total_points)
 
 
 func update_ammo_count(magazine: int, reserve: int):
@@ -433,9 +466,9 @@ func update_health():
 
 
 func death():
-	##death animation and game end
-	print("player has died")
-	pass
+	
+	can_move = false
+	death_screen._death()
 
 var health_regen = false
 var health_regen_rate = 0.5

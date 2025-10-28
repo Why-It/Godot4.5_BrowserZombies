@@ -18,6 +18,15 @@ var cur_difficulty : float
 @onready var tally_texture = preload("res://textures/T_Tally.png")
 @onready var tally_strike_texture = preload("res://textures/T_TallyStrike.png")
 
+var max_zombie_count = 9
+var how_many_zombies_remaining = 9
+
+var zombie_health = 100
+var zombie_speed = 1.5
+var zombie_damage = 20
+var zombie_limb_damage_modifier = 1
+var zombie_hdst_damage_modifier = 2
+
 func _ready() -> void:
 	zones = zones_location_in_tree.get_children()
 	zombie_spawners = spawners_location_in_tree.get_children()
@@ -31,20 +40,29 @@ func _input(event: InputEvent) -> void:
 func zombie_check():
 	zombies_in_play = zombie_location_in_tree.get_children()
 	
-	if zombies_in_play.size() < 9:
-		spawn_zombie()
+	if how_many_zombies_remaining > 0:
+		if zombies_in_play.size() < max_zombie_count:
+			spawn_zombie()
+			zombie_counter()
+	else:
+		if zombies_in_play.size() <= 0:
+			increase_round()
+
+
+func zombie_counter():
+	how_many_zombies_remaining -= 1
 
 var round_roman_text = ""
 func increase_round():
+	cur_round += 1
 	## Increase Difficulty
 	## Decrease zombie spawn timer
 	## Chaneg the round counter to go from Tallies to Arabic numerals after reaching round 10
-	cur_round += 1
-	
+	how_many_zombies_remaining = max_zombie_count
 	
 	change_difficulty()
 	update_round_text()
-	print("increasing round")
+	player.death_screen.round_counter.set("text", cur_round)
 
 func update_round_text():
 	
@@ -72,14 +90,29 @@ func update_round_text():
 
 func change_difficulty():
 	## The plan here to is use the current round to affect the speed and damage zombies do.
-	## Take the current level integer, use maths, modify the spawning logic of the instatiated zombie to modify their attrivutes upon spawning
-	## Difficulty should probably be assigned within this game manager script, leavin the zombie prefab as a base/default character
 	## Also change the maximum amount of zombies to spawn in the round
 	## Also change the types of zombies to be spawned --
 	
-	cur_difficulty = cur_difficulty + (cur_round/10)
-	print(cur_difficulty)
-	pass
+	if cur_round >= 0 && cur_round < 5:
+		cur_difficulty = 1
+		max_zombie_count = 10
+		zombie_check_timer.set("wait_time", 7.5)
+	elif cur_round >=5 && cur_round < 10:
+		cur_difficulty = 2
+		max_zombie_count = 15
+		zombie_check_timer.set("wait_time", 5.5)
+	elif cur_round >= 10 && cur_round < 15:
+		cur_difficulty = 3
+		max_zombie_count = 20
+		zombie_check_timer.set("wait_time", 4.5)
+	elif cur_round >= 15 && cur_round < 20:
+		cur_difficulty = 4
+		max_zombie_count = 25
+		zombie_check_timer.set("wait_time", 4)
+	elif cur_round >= 20:
+		cur_difficulty = 5
+		max_zombie_count = 100
+		zombie_check_timer.set("wait_time", 2.5)
 
 func spawn_zombie():
 	#closest_spawner_to_player()
@@ -97,7 +130,7 @@ func choose_spawner():
 	player_current_zone()
 	var selected_spawn = randi_range(0, cur_zone.spawns.size() - 1)
 	cur_zone.spawns[selected_spawn].spawn_zombie()
-
+	cur_zone.spawns[selected_spawn].difficulty = cur_difficulty
 var closest_spawner = null
 func closest_spawner_to_player():
 	closest_spawner = zombie_spawners[0]

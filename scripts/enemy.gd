@@ -15,13 +15,16 @@ var barricade_path : NodePath
 ##State Machine Shit
 var state_machine
 
+#var difficulty = 0
+
 var move_speed = 1.5
 var health = 100
 var limb_damage_modifier = 1
 var head_damage_modifier = 2
 
 var attack_damage = 20
-var attack_distance = 1.5
+var attack_distance = 1.65
+var attack_reg_distance = 5
 
 @onready var nav_agent = $NavigationAgent3D
 
@@ -34,6 +37,39 @@ func _ready():
 	player_ref = get_tree().get_first_node_in_group("player")
 	state_machine = anime_tree.get("parameters/playback")
 	anime_tree.set("active", true)
+
+func set_stats(difficulty: int):
+	print("Setting stats")
+	if difficulty == 1:
+		move_speed = 1.5
+		health = 100
+		limb_damage_modifier = 1
+		head_damage_modifier = 2
+		attack_damage = 17
+	if difficulty == 2:
+		move_speed = 1.9
+		health = 107
+		limb_damage_modifier = 1
+		head_damage_modifier = 2
+		attack_damage = 20
+	if difficulty == 3:
+		move_speed = 2.5
+		health = 115
+		limb_damage_modifier = 0.95
+		head_damage_modifier = 1.95
+		attack_damage = 24
+	if difficulty == 4:
+		move_speed = 3
+		health = 125
+		limb_damage_modifier = 0.9
+		head_damage_modifier = 1.9
+		attack_damage = 30
+	if difficulty == 5:
+		move_speed = 4.5
+		health = 150
+		limb_damage_modifier = 0.85
+		head_damage_modifier = 1.85
+		attack_damage = 35
 
 func _process(_delta):
 	
@@ -79,6 +115,9 @@ func _physics_process(delta: float) -> void:
 func target_in_range():
 	return global_position.distance_to(target.global_position) < attack_distance
 
+func target_in_hitreg_range():
+	return global_position.distance_to(target.global_position) < attack_reg_distance
+
 func hit(damage):
 	health -= damage
 	if health <= 0.0:
@@ -91,7 +130,7 @@ func hit(damage):
 func hit_target():
 	if target_in_range():
 		var dir = global_position.direction_to(target.global_position)
-		if target.is_in_group("player"):
+		if target.is_in_group("player") && target_in_hitreg_range():
 			target.take_damage(attack_damage, dir)
 		elif target.is_in_group("barricade"):
 			if target.is_plank00_down && target.is_plank01_down && target.is_plank02_down:
@@ -103,6 +142,7 @@ func hit_target():
 @onready var despawn_delay_timer = $DespawnDelay
 @onready var sink_delay_timer = $SinkDelay
 var has_died = false
+var has_been_tracked = false
 func death():
 	if has_died:
 		despawn_delay_timer.start()
@@ -111,12 +151,10 @@ func death():
 
 
 func _on_despawn_delay_timeout() -> void:
-	print("despawning")
 	queue_free()
 
 var is_sinking = false
 func _on_sink_delay_timeout() -> void:
-	print("Sinking")
 	is_sinking = true
 
 var is_barricade_targeted = false

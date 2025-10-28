@@ -1,4 +1,4 @@
-[gd_scene load_steps=26 format=3 uid="uid://b82o5rl68h75n"]
+[gd_scene load_steps=27 format=3 uid="uid://b82o5rl68h75n"]
 
 [ext_resource type="Script" uid="uid://cd2llem3ltlka" path="res://scripts/player.gd" id="1_sqnym"]
 [ext_resource type="PackedScene" uid="uid://cdxptr0ahbrr0" path="res://blueprints_prefabs/pause_menu.tscn" id="2_ruo0x"]
@@ -10,6 +10,7 @@
 [ext_resource type="FontFile" uid="uid://dnwv0l1far158" path="res://fonts/edosz.ttf" id="6_3icfr"]
 [ext_resource type="Texture2D" uid="uid://m5ndclivtbg0" path="res://textures/T_Streak.png" id="6_3noam"]
 [ext_resource type="AnimationLibrary" uid="uid://prad115pbayh" path="res://animations/Player.res" id="7_wq0gl"]
+[ext_resource type="PackedScene" uid="uid://cg4075vgbh0m6" path="res://blueprints_prefabs/player_death_menu.tscn" id="9_cuhag"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_f6354"]
 
@@ -485,6 +486,10 @@ size_flags_horizontal = 3
 [node name="SpacerLower" type="BoxContainer" parent="player_hud/Bottom/BottomRight"]
 layout_mode = 2
 size_flags_vertical = 3
+
+[node name="PlayerDeathMenu" parent="." instance=ExtResource("9_cuhag")]
+visible = false
+offset_right = 0.00012207031
 
 [node name="pause_menu" parent="." instance=ExtResource("2_ruo0x")]
 visible = false

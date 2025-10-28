@@ -12,6 +12,8 @@ var game_manager = "/root"
 
 var spawner_distance_to_player = null
 
+@export var difficulty = 1
+
 func _ready() -> void:
 	pass
 
@@ -19,6 +21,7 @@ func spawn_zombie():
 	#spawn_cooldown_timer.start()
 	setting_spawn_location()
 	var zombie = zombie_scene.instantiate()
+	zombie.set_stats(difficulty)
 	zombie.global_transform.origin = global_spawn_location
 	spawn_location_in_tree.add_child(zombie)
 

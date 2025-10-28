@@ -1,5 +1,5 @@
 63f7b34db8d8cdea90c76aacccf841ec
-::res://::1761138792
+::res://::1761651258
 ::res://addons/::1760097794
 ::res://addons/godot-git-plugin/::1760097794
 git_plugin.gdextension::GDExtension::3888295373194717080::1760097794::0::1::::<><><>0<>0<><>::
@@ -7,12 +7,12 @@ plugin.cfg::TextFile::-1::1760097794::0::1::::<><><>0<>0<><>::
 THIRDPARTY.md::TextFile::-1::1760097794::0::1::::<><><>0<>0<><>::
 ::res://addons/godot-git-plugin/linux/::1760097794
 ::res://addons/godot-git-plugin/macos/::1760097794
-::res://addons/godot-git-plugin/win64/::1761138785
+::res://addons/godot-git-plugin/win64/::1761651251
 ::res://animations/::1760540679
 guns.res::AnimationLibrary::6274752843136868062::1759940523::0::1::::<><><>0<>0<><>::
 Player.res::AnimationLibrary::1087933840926383087::1759154793::0::1::::<><><>0<>0<><>::
 Zombie.res::AnimationLibrary::1229847049085767075::1760540679::0::1::::<><><>0<>0<><>::
-::res://blueprints_prefabs/::1761071572
+::res://blueprints_prefabs/::1761139839
 assualt_rifle.tscn::PackedScene::7694106542277715600::1759946298::0::1::::<><><>0<>0<><>::uid://dvxrux4l5qnxi::::res://scripts/assualt_rifle.gd<>uid://cvnsi6sgs43qg::::res://animations/guns.res<>uid://2sf528bwke5i::::res://textures/reticle.png
 auto_assualt_rifle.tscn::PackedScene::921114456630266734::1759946296::0::1::::<><><>0<>0<><>::uid://b3l2pa5vr4nht::::res://scripts/auto_assualt_rifle.gd<>uid://2sf528bwke5i::::res://textures/reticle.png<>uid://cvnsi6sgs43qg::::res://animations/guns.res
 barricade.tscn::PackedScene::1304656132146714591::1760702881::0::1::::<><><>0<>0<><>::uid://c533ath0r03kl::::res://scripts/barricade.gd<>uid://b58tgnvf01kej::::res://materials/M_ProtoGrid_DarkRed.tres<>uid://75fuopaw7nj3::::res://materials/M_ProtoGrid_Sand.tres
@@ -21,7 +21,7 @@ bullet_hole_wound.tscn::PackedScene::1847364646525942528::1758907699::0::1::::<>
 character_zombie.tscn::PackedScene::381512714581606698::1759148688::0::1::::<><><>0<>0<><>::uid://dw51vdkk73rom::::res://Mesh/Zombie/Zombie.fbx<>uid://dosbg8rux54m8::::res://materials/M_Zombie.tres
 handgun.tscn::PackedScene::2132643822095590133::1759946299::0::1::::<><><>0<>0<><>::uid://cje7bmqe30k1i::::res://scripts/handgun.gd<>uid://2sf528bwke5i::::res://textures/reticle.png<>uid://cvnsi6sgs43qg::::res://animations/guns.res
 pause_menu.tscn::PackedScene::5031834203145840855::1758818839::0::1::::<><><>0<>0<><>::uid://df7il5c55vq38::::res://scripts/pause_menu.gd
-player.tscn::PackedScene::4759295246166372465::1761071572::0::1::::<><><>0<>0<><>::uid://cd2llem3ltlka::::res://scripts/player.gd<>uid://cdxptr0ahbrr0::::res://blueprints_prefabs/pause_menu.tscn<>uid://negvdlc24mmo::::res://blueprints_prefabs/auto_assualt_rifle.tscn<>uid://dhvc2tc60ujvs::::res://blueprints_prefabs/assualt_rifle.tscn<>uid://d2qlamd3kxdkb::::res://textures/icon.svg<>uid://5nclj8qnidtt::::res://blueprints_prefabs/handgun.tscn<>uid://0ekvphpapcvl::::res://textures/blood_splatter256.png<>uid://dnwv0l1far158::::res://fonts/edosz.ttf<>uid://m5ndclivtbg0::::res://textures/T_Streak.png<>uid://prad115pbayh::::res://animations/Player.res
+player.tscn::PackedScene::4759295246166372465::1761139839::0::1::::<><><>0<>0<><>::uid://cd2llem3ltlka::::res://scripts/player.gd<>uid://cdxptr0ahbrr0::::res://blueprints_prefabs/pause_menu.tscn<>uid://negvdlc24mmo::::res://blueprints_prefabs/auto_assualt_rifle.tscn<>uid://dhvc2tc60ujvs::::res://blueprints_prefabs/assualt_rifle.tscn<>uid://d2qlamd3kxdkb::::res://textures/icon.svg<>uid://5nclj8qnidtt::::res://blueprints_prefabs/handgun.tscn<>uid://0ekvphpapcvl::::res://textures/blood_splatter256.png<>uid://dnwv0l1far158::::res://fonts/edosz.ttf<>uid://m5ndclivtbg0::::res://textures/T_Streak.png<>uid://prad115pbayh::::res://animations/Player.res
 player_hud.tscn::PackedScene::675605677314594813::1729610342::0::1::::<><><>0<>0<><>::uid://d2qlamd3kxdkb::::res://textures/icon.svg
 standard_building.tscn::PackedScene::6174597808715855850::1760961370::0::1::::<><><>0<>0<><>::uid://dmvnohvs0wgvg::::res://materials/M_ProtoGrid_Gray.tres<>uid://bt5ja724vgdna::::res://materials/M_ProtoGridWA_Gray.tres<>uid://75fuopaw7nj3::::res://materials/M_ProtoGrid_Sand.tres<>uid://dhlyyu47ren3m::::res://materials/M_ProtoGrid_LightBlue.tres
 tally.tscn::PackedScene::2014499068511690396::1761070682::0::1::::<><><>0<>0<><>::uid://d1shti3v5c2nu::::res://textures/T_Tally.png
@@ -52,10 +52,10 @@ SM_Floor10x10.tscn::PackedScene::7313442282849746833::1759153995::0::1::::<><><>
 SM_ProtoCube.tscn::PackedScene::4300045773958482398::1759151645::0::1::::<><><>0<>0<><>::uid://bt5ja724vgdna::::res://materials/M_ProtoGridWA_Gray.tres
 ::res://Mesh/Zombie/::1759148688
 Zombie.fbx::PackedScene::8766964260738072012::1758735797::1759148672::1::::<><><>0<>0<>cc750532273b1bee0a887cc5bf35af1c<>res://.godot/imported/Zombie.fbx-0494de711eee1a5a66dd7854400af5d8.scn::
-::res://scenes_levels/::1761071503
-game_manager.gd::GDScript::5302992002071671356::1761071503::0::1::::<>Node3D<><>0<>0<><>::
+::res://scenes_levels/::1761154617
+game_manager.gd::GDScript::5302992002071671356::1761140084::0::1::::<>Node3D<><>0<>0<><>::
 mainmenu.tscn::PackedScene::1234498359879370325::1760462818::0::1::::<><><>0<>0<><>::uid://dqkntty8p7ehq::::res://scripts/mainmenu.gd<>uid://g8eerc14a7ls::::res://textures/test_00.png
-oct_14_2025.tscn::PackedScene::4834082921811566682::1761071421::0::1::::<><><>0<>0<><>::uid://b82o5rl68h75n::::res://blueprints_prefabs/player.tscn<>uid://chs2rebps8bhc::::res://scenes_levels/game_manager.gd<>uid://cq7v61y1lv3j5::::res://blueprints_prefabs/zombie_spawning_node.tscn<>uid://cxodkb0mvgmn4::::res://materials/M_ProtoGrid_DarkGreen.tres<>uid://ct8ayux280e8a::::res://blueprints_prefabs/standard_building.tscn<>uid://dwv1ubwydck5x::::res://blueprints_prefabs/zone.tscn<>uid://cvta4yie7oim4::::res://blueprints_prefabs/wide_building.tscn<>uid://st8q4ihnfprj::::res://blueprints_prefabs/barricade.tscn
+oct_14_2025.tscn::PackedScene::4834082921811566682::1761154617::0::1::::<><><>0<>0<><>::uid://b82o5rl68h75n::::res://blueprints_prefabs/player.tscn<>uid://chs2rebps8bhc::::res://scenes_levels/game_manager.gd<>uid://cq7v61y1lv3j5::::res://blueprints_prefabs/zombie_spawning_node.tscn<>uid://cxodkb0mvgmn4::::res://materials/M_ProtoGrid_DarkGreen.tres<>uid://ct8ayux280e8a::::res://blueprints_prefabs/standard_building.tscn<>uid://dwv1ubwydck5x::::res://blueprints_prefabs/zone.tscn<>uid://cvta4yie7oim4::::res://blueprints_prefabs/wide_building.tscn<>uid://st8q4ihnfprj::::res://blueprints_prefabs/barricade.tscn
 sen_dolta.tscn::PackedScene::1751566539583688298::1760052905::0::1::::<><><>0<>0<><>::uid://uv77si0ay7k6::::res://materials/M_ProtoGrid_Yellow_Trans.tres<>uid://b82o5rl68h75n::::res://blueprints_prefabs/player.tscn<>uid://dox216rwfpxfw::::res://blueprints_prefabs/zombie.tscn<>uid://75fuopaw7nj3::::res://M_ProtoGrid_Sand.tres<>uid://cja3oerih0jcx::::res://materials/M_ProtoGrid_Green.tres<>uid://bt5ja724vgdna::::res://materials/M_ProtoGridWA_Gray.tres<>uid://dmvnohvs0wgvg::::res://materials/M_ProtoGrid_Gray.tres
 test_scene.tscn::PackedScene::1102168004693929405::1759942197::0::1::::<><><>0<>0<><>::uid://cja3oerih0jcx::::res://materials/M_ProtoGrid_Green.tres<>uid://b82o5rl68h75n::::res://blueprints_prefabs/player.tscn<>uid://dox216rwfpxfw::::res://blueprints_prefabs/zombie.tscn<>uid://uv77si0ay7k6::::res://materials/M_ProtoGrid_Yellow_Trans.tres
 ::res://scripts/::1761068539
