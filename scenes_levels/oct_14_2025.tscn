@@ -1,4 +1,4 @@
-[gd_scene load_steps=21 format=3 uid="uid://ca4wv0hdij1w5"]
+[gd_scene load_steps=22 format=3 uid="uid://ca4wv0hdij1w5"]
 
 [ext_resource type="PackedScene" uid="uid://b82o5rl68h75n" path="res://blueprints_prefabs/player.tscn" id="1_m6478"]
 [ext_resource type="Script" uid="uid://chs2rebps8bhc" path="res://scenes_levels/game_manager.gd" id="1_nm8pb"]
@@ -8,6 +8,7 @@
 [ext_resource type="PackedScene" uid="uid://dwv1ubwydck5x" path="res://blueprints_prefabs/zone.tscn" id="4_npjpb"]
 [ext_resource type="PackedScene" uid="uid://cvta4yie7oim4" path="res://blueprints_prefabs/wide_building.tscn" id="5_twf1r"]
 [ext_resource type="PackedScene" uid="uid://st8q4ihnfprj" path="res://blueprints_prefabs/barricade.tscn" id="7_q315i"]
+[ext_resource type="PackedScene" uid="uid://baa42cnkii2fq" path="res://blueprints_prefabs/wall_weapon.tscn" id="9_6axqb"]
 
 [sub_resource type="ProceduralSkyMaterial" id="ProceduralSkyMaterial_twf1r"]
 sky_top_color = Color(0.48139113, 0.15345135, 0.20698765, 1)
@@ -434,6 +435,26 @@ transform = Transform3D(0.258819, 0, -0.96592575, 0, 1, 0, 0.96592575, 0, 0.2588
 use_collision = true
 size = Vector3(1, 1, 3.625)
 
+[node name="Wall Weapons" type="Node3D" parent="."]
+
+[node name="Wall_Weapon" parent="Wall Weapons" node_paths=PackedStringArray("wall_weapon") instance=ExtResource("9_6axqb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -6.125, 0.75, 11.45)
+wall_weapon = NodePath("weapons/handgun")
+initial_price = 500
+refill_price = 350
+
+[node name="Wall_Weapon2" parent="Wall Weapons" node_paths=PackedStringArray("wall_weapon") instance=ExtResource("9_6axqb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.625, 0.75, 11.45)
+wall_weapon = NodePath("weapons/full-auto")
+initial_price = 1200
+refill_price = 1000
+
+[node name="Wall_Weapon3" parent="Wall Weapons" node_paths=PackedStringArray("wall_weapon") instance=ExtResource("9_6axqb")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 10, 0.625, 11.45)
+wall_weapon = NodePath("weapons/semi-auto")
+initial_price = 750
+refill_price = 500
+
 [connection signal="timeout" from="ZombieCheckTimer" to="." method="_on_zombie_check_timer_timeout"]
 
 [editable path="ZombieNodes/Zombie Spawners/ZombieSpawningNode00"]
@@ -447,3 +468,6 @@ size = Vector3(1, 1, 3.625)
 [editable path="ZombieNodes/Zombie Spawners/ZombieSpawningNode08"]
 [editable path="ZombieNodes/Zones/Spawn"]
 [editable path="ZombieNodes/Zones/Entrance"]
+[editable path="Wall Weapons/Wall_Weapon"]
+[editable path="Wall Weapons/Wall_Weapon2"]
+[editable path="Wall Weapons/Wall_Weapon3"]

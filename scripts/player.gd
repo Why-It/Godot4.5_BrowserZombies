@@ -47,7 +47,7 @@ var camera_shake_mult = 1.0
 
 
 @onready var points_text = $player_hud/Bottom/BottomRight/SpacerUpper/TextureRect/points
-var points = 0
+var points = 1500
 var total_points = 0
 var spent_points = 0
 var round_count = 0
@@ -169,6 +169,8 @@ func _physics_process(delta):
 			if able_to_interact:
 				if interact_object.is_in_group("barricade"):
 					interact_with_barricade()
+				elif interact_object.is_in_group("wall_weapon"):
+					interact_object.interacted()
 			pass
 	
 	
@@ -552,3 +554,29 @@ var interact_object = null
 func interact_with_barricade():
 	interact_object.rebuild_plank()
 	pass
+
+func recieve_weapon(weapon):
+	if weapon.name == "handgun":
+		pass
+	elif weapon.name == "semi-auto":
+		pass
+	elif weapon.name == "full-auto":
+		pass
+
+func buy_ammo(weapon):
+	if weapon.name == "handgun":
+		for w in range(0,weapons.size()-1):
+			var indexed_weapon = weapons[w]
+			if get_node(indexed_weapon).name == "handgun":
+				indexed_weapon.cur_reserve_ammo = indexed_weapon.max_reserve_ammo
+				print("ieucnweiucnwieucn")
+	elif weapon.name == "semi-auto":
+		for w in range(0,weapons.size()-1):
+			var indexed_weapon = weapons[w]
+			if get_node(indexed_weapon).name == "assualt_rifle":
+				indexed_weapon.cur_reserve_ammo = indexed_weapon.max_reserve_ammo
+	if weapon.name == "full-auto":
+		for w in range(0,weapons.size()-1):
+			var indexed_weapon = weapons[w]
+			if get_node(indexed_weapon).name == "auto_assault_rifle":
+				indexed_weapon.cur_reserve_ammo = indexed_weapon.max_reserve_ammo

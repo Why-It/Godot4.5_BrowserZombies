@@ -28,14 +28,15 @@ func _on_settings_pressed():
 
 func _on_main_menu_pressed():
 	# Open the confirmation panel
-	$BoxContainer/mid/mid/Panel/confirmation_panel.set("visible", true)
+	$confirmation.set("visible", true)
 	is_confirmation_visible = true
 
 
-func _on_cancel_pressed():
-	# Hide the confirmation panel
-	$BoxContainer/mid/mid/Panel/confirmation_panel.set("visible", false)
-	is_confirmation_visible = false
-
-func _on_confirm_pressed():
+func _on_yes_pressed() -> void:
 	get_node("/root/global").goto_scene("res://scenes_levels/mainmenu.tscn")
+
+
+func _on_no_pressed() -> void:
+	# Hide the confirmation panel
+	$confirmation.set("visible", false)
+	is_confirmation_visible = false

@@ -119,6 +119,113 @@ size_flags_horizontal = 3
 size_flags_vertical = 3
 size_flags_stretch_ratio = 0.25
 
+[node name="confirmation" type="BoxContainer" parent="."]
+visible = false
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+vertical = true
+
+[node name="top" type="HBoxContainer" parent="confirmation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.5
+alignment = 1
+
+[node name="mid" type="HBoxContainer" parent="confirmation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+
+[node name="left" type="VBoxContainer" parent="confirmation/mid"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="mid" type="VBoxContainer" parent="confirmation/mid"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 2.0
+alignment = 1
+
+[node name="Panel" type="Panel" parent="confirmation/mid/mid"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="VBoxContainer2" type="VBoxContainer" parent="confirmation/mid/mid/Panel"]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="top_padding" type="VBoxContainer" parent="confirmation/mid/mid/Panel/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+alignment = 1
+
+[node name="center" type="HBoxContainer" parent="confirmation/mid/mid/Panel/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+size_flags_stretch_ratio = 6.0
+
+[node name="left_padding" type="HBoxContainer" parent="confirmation/mid/mid/Panel/VBoxContainer2/center"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="center" type="VBoxContainer" parent="confirmation/mid/mid/Panel/VBoxContainer2/center"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_stretch_ratio = 3.0
+alignment = 1
+
+[node name="Label" type="Label" parent="confirmation/mid/mid/Panel/VBoxContainer2/center/center"]
+layout_mode = 2
+text = "ARE YOU SURE YOU WANT TO RETURN TO THE MAIN MENU?"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="HSeparator" type="HSeparator" parent="confirmation/mid/mid/Panel/VBoxContainer2/center/center"]
+layout_mode = 2
+
+[node name="no" type="Button" parent="confirmation/mid/mid/Panel/VBoxContainer2/center/center"]
+layout_mode = 2
+text = "NO"
+
+[node name="yes" type="Button" parent="confirmation/mid/mid/Panel/VBoxContainer2/center/center"]
+layout_mode = 2
+text = "YES"
+
+[node name="right_padding" type="HBoxContainer" parent="confirmation/mid/mid/Panel/VBoxContainer2/center"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+alignment = 1
+
+[node name="bottom_padding" type="VBoxContainer" parent="confirmation/mid/mid/Panel/VBoxContainer2"]
+layout_mode = 2
+size_flags_vertical = 3
+
+[node name="right" type="VBoxContainer" parent="confirmation/mid"]
+layout_mode = 2
+size_flags_horizontal = 3
+alignment = 1
+
+[node name="bot" type="HBoxContainer" parent="confirmation"]
+layout_mode = 2
+size_flags_horizontal = 3
+size_flags_vertical = 3
+size_flags_stretch_ratio = 0.25
+
 [connection signal="pressed" from="BoxContainer/mid/mid/Panel/VBoxContainer2/center/center/resume" to="." method="_on_resume_pressed"]
 [connection signal="pressed" from="BoxContainer/mid/mid/Panel/VBoxContainer2/center/center/settings" to="." method="_on_settings_pressed"]
 [connection signal="pressed" from="BoxContainer/mid/mid/Panel/VBoxContainer2/center/center/main_menu" to="." method="_on_main_menu_pressed"]
+[connection signal="pressed" from="confirmation/mid/mid/Panel/VBoxContainer2/center/center/no" to="." method="_on_no_pressed"]
+[connection signal="pressed" from="confirmation/mid/mid/Panel/VBoxContainer2/center/center/yes" to="." method="_on_yes_pressed"]

@@ -5,13 +5,14 @@
 [ext_resource type="AnimationLibrary" uid="uid://cvnsi6sgs43qg" path="res://animations/guns.res" id="3_i65ot"]
 
 [sub_resource type="BoxMesh" id="BoxMesh_num7p"]
-size = Vector3(0.025, 0.05, 0.025)
+size = Vector3(0.025, 0.06, 0.025)
 
 [sub_resource type="BoxMesh" id="BoxMesh_dkivr"]
-size = Vector3(0.05, 0.025, 0.05)
+size = Vector3(0.062, 0.051, 0.02)
 
-[sub_resource type="BoxMesh" id="BoxMesh_05lbu"]
-size = Vector3(0.05, 0.025, 0.05)
+[sub_resource type="TorusMesh" id="TorusMesh_8acjr"]
+inner_radius = 0.015
+outer_radius = 0.035
 
 [sub_resource type="BoxMesh" id="BoxMesh_8awqd"]
 size = Vector3(0.5, 1, 0.5)
@@ -79,16 +80,16 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.049225688, -0.38406467)
 [node name="sight" type="Node3D" parent="gun/components"]
 
 [node name="fore-sight" type="MeshInstance3D" parent="gun/components/sight"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.0968643, -0.313197)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.10608822, -0.313197)
 mesh = SubResource("BoxMesh_num7p")
 
 [node name="rear-sight-left" type="MeshInstance3D" parent="gun/components/sight"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, -0.0213223, 0.100772, 0.118641)
+transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0, 0.109, 0.119)
 mesh = SubResource("BoxMesh_dkivr")
 
-[node name="rear-sight-right" type="MeshInstance3D" parent="gun/components/sight"]
-transform = Transform3D(0.5, 0, 0, 0, 0.5, 0, 0, 0, 0.5, 0.0227361, 0.100772, 0.118641)
-mesh = SubResource("BoxMesh_05lbu")
+[node name="rear-sight-top" type="MeshInstance3D" parent="gun/components/sight"]
+transform = Transform3D(0.5, 0, 0, 0, -2.1855694e-08, -0.5, 0, 0.5, -2.1855694e-08, 0, 0.1304309, 0.119)
+mesh = SubResource("TorusMesh_8acjr")
 
 [node name="foregrip" type="Node3D" parent="gun/components"]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.15395, -0.231158)
